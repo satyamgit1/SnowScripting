@@ -639,6 +639,274 @@
 //   );
 // }
 
+// import { useState, useEffect } from 'react';
+// import { collection, query, onSnapshot } from 'firebase/firestore';
+// import { db } from '../../lib/firebase';
+// import Link from 'next/link';
+// import { useAuth } from '../../services/auth';
+// import { getUserNotes, deleteNote } from '../../services/notes';
+// import Modal from '../../components/Modal'; // Assuming you have a Modal component
+
+// export default function NoteList({ userId }) {
+//   const { user } = useAuth();
+//   const [notes, setNotes] = useState([]);
+//   const [filteredNotes, setFilteredNotes] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [searchTerm, setSearchTerm] = useState('');
+//   const [filters, setFilters] = useState({
+//     scriptType: 'all',
+//     project: 'all',
+//     dateRange: 'all'
+//   });
+//   const [deletingId, setDeletingId] = useState(null);
+//   const [showDeleteModal, setShowDeleteModal] = useState(false);
+//   const [noteToDelete, setNoteToDelete] = useState(null);
+
+//   // Fetch notes from Firestore
+//   useEffect(() => {
+//     if (!userId) return;
+
+//     const q = query(collection(db, 'users', userId, 'notes'));
+//     const unsubscribe = onSnapshot(q, (querySnapshot) => {
+//       const notesData = [];
+//       querySnapshot.forEach((doc) => {
+//         notesData.push({ id: doc.id, ...doc.data() });
+//       });
+//       setNotes(notesData);
+//       setFilteredNotes(notesData);
+//       setLoading(false);
+//     });
+
+//     return () => unsubscribe();
+//   }, [userId]);
+
+//   // Apply filters and search
+//   useEffect(() => {
+//     let result = [...notes];
+    
+//     // Apply search
+//     if (searchTerm) {
+//       const term = searchTerm.toLowerCase();
+//       result = result.filter(note => 
+//         note.title.toLowerCase().includes(term) ||
+//         note.content.toLowerCase().includes(term) ||
+//         (note.project && note.project.toLowerCase().includes(term)) ||
+//         (note.tags && note.tags.some(tag => tag.toLowerCase().includes(term)))
+//       );
+//     }
+
+//     // Apply filters
+//     if (filters.scriptType !== 'all') {
+//       result = result.filter(note => note.scriptType === filters.scriptType);
+//     }
+    
+//     if (filters.project !== 'all') {
+//       result = result.filter(note => note.project === filters.project);
+//     }
+    
+//     if (filters.dateRange !== 'all') {
+//       const now = new Date();
+//       result = result.filter(note => {
+//         const noteDate = note.updatedAt?.toDate() || note.createdAt?.toDate();
+//         if (!noteDate) return false;
+        
+//         const diffTime = now - noteDate;
+//         const diffDays = diffTime / (1000 * 60 * 60 * 24);
+        
+//         switch (filters.dateRange) {
+//           case 'today': return diffDays < 1;
+//           case 'week': return diffDays < 7;
+//           case 'month': return diffDays < 30;
+//           default: return true;
+//         }
+//       });
+//     }
+
+//     setFilteredNotes(result);
+//   }, [searchTerm, filters, notes]);
+
+//   const handleDelete = async (noteId) => {
+//     setDeletingId(noteId);
+//     try {
+//       const success = await deleteNote(user.uid, noteId);
+//       if (!success) throw new Error('Failed to delete note');
+//     } catch (err) {
+//       console.error('Delete error:', err);
+//       alert('Failed to delete script. Please try again.');
+//     } finally {
+//       setDeletingId(null);
+//     }
+//   };
+
+//   // Get unique projects for filter dropdown
+//   const allProjects = notes.map(note => note.project).filter(Boolean);
+//   const uniqueProjects = [...new Set(allProjects)];
+
+//   if (loading) return (
+//     <div className="flex justify-center items-center min-h-[200px]">
+//       <div className="animate-pulse flex space-x-4">
+//         <div className="flex-1 space-y-4 py-1">
+//           <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+//           <div className="space-y-2">
+//             <div className="h-4 bg-gray-200 rounded"></div>
+//             <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+
+//   return (
+//     <div className="space-y-8">
+//       {/* Search and Filter Controls */}
+//       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+//         <h2 className="text-xl font-semibold text-gray-800 mb-6">Filter Notes</h2>
+        
+//         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+//           {/* Search Input */}
+//           <div className="md:col-span-2">
+//             <label className="block text-sm font-medium text-gray-600 mb-2">Search Notes</label>
+//             <div className="relative">
+//               <input
+//                 type="text"
+//                 placeholder="Search by title, content, tags..."
+//                 value={searchTerm}
+//                 onChange={(e) => setSearchTerm(e.target.value)}
+//                 className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all duration-200"
+//               />
+//             </div>
+//           </div>
+
+//           {/* Script Type Filter */}
+//           <div>
+//             <label className="block text-sm font-medium text-gray-600 mb-2">Script Type</label>
+//             <div className="relative">
+//               <select
+//                 value={filters.scriptType}
+//                 onChange={(e) => setFilters({...filters, scriptType: e.target.value})}
+//                 className="appearance-none block w-full px-3 py-2.5 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all duration-200"
+//               >
+//                 <option value="all">All Types</option>
+//                 <option value="business_rule">Business Rule</option>
+//                 <option value="script_include">Script Include</option>
+//                 <option value="client_script">Client Script</option>
+//                 <option value="ui_action">UI Action</option>
+//                 <option value="scheduled_job">Scheduled Job</option>
+//               </select>
+//             </div>
+//           </div>
+
+//           {/* Project Filter */}
+//           <div>
+//             <label className="block text-sm font-medium text-gray-600 mb-2">Project</label>
+//             <div className="relative">
+//               <select
+//                 value={filters.project}
+//                 onChange={(e) => setFilters({...filters, project: e.target.value})}
+//                 className="appearance-none block w-full px-3 py-2.5 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all duration-200"
+//               >
+//                 <option value="all">All Projects</option>
+//                 {uniqueProjects.map(project => (
+//                   <option key={project} value={project}>{project}</option>
+//                 ))}
+//               </select>
+//             </div>
+//           </div>
+//         </div>
+
+//         {/* Date Range Filter */}
+//         <div className="mt-6">
+//           <label className="block text-sm font-medium text-gray-600 mb-2">Date Range</label>
+//           <div className="flex flex-wrap gap-2">
+//             {['all', 'today', 'week', 'month'].map((range) => (
+//               <button
+//                 key={range}
+//                 onClick={() => setFilters({...filters, dateRange: range})}
+//                 className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
+//                   filters.dateRange === range
+//                     ? 'bg-blue-600 text-white shadow-md'
+//                     : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+//                 }`}
+//               >
+//                 {range === 'all' && 'All Time'}
+//                 {range === 'today' && 'Today'}
+//                 {range === 'week' && 'This Week'}
+//                 {range === 'month' && 'This Month'}
+//               </button>
+//             ))}
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Notes List */}
+//       <div>
+//         <div className="flex justify-between items-center mb-4">
+//           <h2 className="text-xl font-semibold text-gray-800">Your Scripts</h2>
+//           <span className="text-sm text-gray-500">
+//             {filteredNotes.length} {filteredNotes.length === 1 ? 'script' : 'scripts'} found
+//           </span>
+//         </div>
+        
+//         {filteredNotes.length === 0 ? (
+//           <div className="bg-white p-8 rounded-xl border border-gray-100 text-center">
+//             <h3 className="mt-2 text-lg font-medium text-gray-700">
+//               {notes.length === 0 ? 'No scripts found' : 'No matching scripts'}
+//             </h3>
+//           </div>
+//         ) : (
+//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+//             {filteredNotes.map((note) => (
+//               <div key={note.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+//                 <div className="flex justify-between items-start">
+//                   <Link href={`/note/${note.id}`} className="flex-1">
+//                     <h3 className="font-bold text-lg hover:text-blue-600">{note.title}</h3>
+//                     <p className="text-sm text-gray-500 mt-1">
+//                       {note.scriptType.replace(/_/g, ' ')} • {note.project}
+//                     </p>
+//                   </Link>
+                  
+//                   <div className="flex space-x-2">
+//                     <Link 
+//                       href={`/note/${note.id}`}
+//                       className="px-3 py-1 text-xs bg-green-600 text-white rounded-md shadow-md"
+//                     >
+//                       View
+//                     </Link>
+//                     <button
+//                       onClick={() => {
+//                         setNoteToDelete(note.id);
+//                         setShowDeleteModal(true);
+//                       }}
+//                       className="px-3 py-1 text-xs bg-red-600 text-white rounded-md shadow-md"
+//                     >
+//                       Delete
+//                     </button>
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         )}
+//       </div>
+
+//       {/* Delete Confirmation Modal */}
+//       {showDeleteModal && (
+//         <Modal
+//           isOpen={showDeleteModal}
+//           onClose={() => setShowDeleteModal(false)}
+//           onConfirm={() => {
+//             handleDelete(noteToDelete);
+//             setShowDeleteModal(false);
+//           }}
+//           title="Delete Script"
+//           message="Are you sure you want to delete this script? This action cannot be undone."
+//         />
+//       )}
+//     </div>
+//   );
+// }
+
+
 import { useState, useEffect } from 'react';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
@@ -759,7 +1027,7 @@ export default function NoteList({ userId }) {
   return (
     <div className="space-y-8">
       {/* Search and Filter Controls */}
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
         <h2 className="text-xl font-semibold text-gray-800 mb-6">Filter Notes</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -772,7 +1040,7 @@ export default function NoteList({ userId }) {
                 placeholder="Search by title, content, tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all duration-200"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition-all duration-200"
               />
             </div>
           </div>
@@ -784,7 +1052,7 @@ export default function NoteList({ userId }) {
               <select
                 value={filters.scriptType}
                 onChange={(e) => setFilters({...filters, scriptType: e.target.value})}
-                className="appearance-none block w-full px-3 py-2.5 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all duration-200"
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition-all duration-200"
               >
                 <option value="all">All Types</option>
                 <option value="business_rule">Business Rule</option>
@@ -803,7 +1071,7 @@ export default function NoteList({ userId }) {
               <select
                 value={filters.project}
                 onChange={(e) => setFilters({...filters, project: e.target.value})}
-                className="appearance-none block w-full px-3 py-2.5 border border-gray-200 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-100 focus:border-blue-400 transition-all duration-200"
+                className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition-all duration-200"
               >
                 <option value="all">All Projects</option>
                 {uniqueProjects.map(project => (
@@ -824,8 +1092,8 @@ export default function NoteList({ userId }) {
                 onClick={() => setFilters({...filters, dateRange: range})}
                 className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
                   filters.dateRange === range
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50'
+                    ? 'bg-orange-600 text-white shadow-lg'
+                    : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
                 }`}
               >
                 {range === 'all' && 'All Time'}
@@ -856,10 +1124,10 @@ export default function NoteList({ userId }) {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredNotes.map((note) => (
-              <div key={note.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+              <div key={note.id} className="p-4 border rounded-lg hover:shadow-lg transition-shadow">
                 <div className="flex justify-between items-start">
                   <Link href={`/note/${note.id}`} className="flex-1">
-                    <h3 className="font-bold text-lg hover:text-blue-600">{note.title}</h3>
+                    <h3 className="font-bold text-lg hover:text-orange-600">{note.title}</h3>
                     <p className="text-sm text-gray-500 mt-1">
                       {note.scriptType.replace(/_/g, ' ')} • {note.project}
                     </p>
@@ -868,7 +1136,7 @@ export default function NoteList({ userId }) {
                   <div className="flex space-x-2">
                     <Link 
                       href={`/note/${note.id}`}
-                      className="px-3 py-1 text-xs bg-green-600 text-white rounded-md shadow-md"
+                      className="px-3 py-1 text-xs bg-orange-600 text-white rounded-md shadow-md hover:bg-orange-700"
                     >
                       View
                     </Link>
@@ -877,7 +1145,7 @@ export default function NoteList({ userId }) {
                         setNoteToDelete(note.id);
                         setShowDeleteModal(true);
                       }}
-                      className="px-3 py-1 text-xs bg-red-600 text-white rounded-md shadow-md"
+                      className="px-3 py-1 text-xs bg-red-600 text-white rounded-md shadow-md hover:bg-red-700"
                     >
                       Delete
                     </button>

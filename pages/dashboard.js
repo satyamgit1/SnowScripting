@@ -25,7 +25,7 @@ export default function Dashboard() {
         <h1 className="text-3xl font-bold text-gray-800">My ServiceNow Scripts</h1>
         <Link 
           href="/note/new"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition"
+          className="bg-orange-500 hover:bg-orange-900 text-white px-4 py-2 rounded-md transition"
         >
           New Script
         </Link>

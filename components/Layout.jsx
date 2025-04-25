@@ -139,7 +139,7 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold text-blue-600">
+          <Link href="/" className="text-xl font-bold text-orange-600">
             ServiceNow Dev Notes
           </Link>
           

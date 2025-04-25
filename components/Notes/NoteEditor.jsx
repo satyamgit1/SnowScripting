@@ -178,6 +178,7 @@ export default function NoteEditor({ initialData, onSave }) {
     tags: []
   });
   const [showDownloadMenu, setShowDownloadMenu] = useState(false);
+  const [showSavedPopup, setShowSavedPopup] = useState(false);
 
   const scriptTypes = [
     'business_rule',
@@ -236,14 +237,24 @@ export default function NoteEditor({ initialData, onSave }) {
     URL.revokeObjectURL(url);
   };
 
+  const handleSave = () => {
+    onSave(formData);
+    setShowSavedPopup(true);
+
+    // Close the popup after 3 seconds
+    setTimeout(() => {
+      setShowSavedPopup(false);
+    }, 1000);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-start">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">
+          {/* <h2 className="text-2xl font-bold text-black">
             {initialData ? 'Edit Script' : 'Create New Script'}
-          </h2>
-          <p className="text-sm text-gray-500 mt-1">
+          </h2> */}
+          <p className="text-sm text-gray-600 mt-1">
             {initialData ? 'Update your existing script' : 'Create a new ServiceNow script'}
           </p>
         </div>
@@ -252,7 +263,7 @@ export default function NoteEditor({ initialData, onSave }) {
           <div className="relative">
             <button
               onClick={() => setShowDownloadMenu(!showDownloadMenu)}
-              className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+              className="flex items-center px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition-colors"
             >
               <DownloadIcon className="h-5 w-5 mr-2" />
               Download
@@ -298,11 +309,11 @@ export default function NoteEditor({ initialData, onSave }) {
 
       <form onSubmit={(e) => {
         e.preventDefault();
-        onSave(formData);
+        handleSave();
       }} className="space-y-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="title" className="block text-sm font-medium text-black">
               Script Title *
             </label>
             <input
@@ -310,21 +321,21 @@ export default function NoteEditor({ initialData, onSave }) {
               type="text"
               value={formData.title}
               onChange={(e) => setFormData({...formData, title: e.target.value})}
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
               required
               placeholder="e.g., Incident Priority Business Rule"
             />
           </div>
 
           <div>
-            <label htmlFor="scriptType" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="scriptType" className="block text-sm font-medium text-black">
               Script Type *
             </label>
             <select
               id="scriptType"
               value={formData.scriptType}
               onChange={(e) => setFormData({...formData, scriptType: e.target.value})}
-              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
+              className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm rounded-md"
               required
             >
               {scriptTypes.map(type => (
@@ -337,7 +348,7 @@ export default function NoteEditor({ initialData, onSave }) {
         </div>
 
         <div>
-          <label htmlFor="project" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="project" className="block text-sm font-medium text-black">
             Project Name
           </label>
           <input
@@ -345,13 +356,13 @@ export default function NoteEditor({ initialData, onSave }) {
             type="text"
             value={formData.project}
             onChange={(e) => setFormData({...formData, project: e.target.value})}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
             placeholder="e.g., HR Service Portal Implementation"
           />
         </div>
 
         <div>
-          <label htmlFor="content" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="content" className="block text-sm font-medium text-black">
             Script Content *
           </label>
           <textarea
@@ -359,7 +370,7 @@ export default function NoteEditor({ initialData, onSave }) {
             rows={15}
             value={formData.content}
             onChange={(e) => setFormData({...formData, content: e.target.value})}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 font-mono text-sm"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 font-mono text-sm"
             required
             placeholder="Paste your script here..."
           />
@@ -369,18 +380,31 @@ export default function NoteEditor({ initialData, onSave }) {
           <button
             type="button"
             onClick={() => window.history.back()}
-            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
           >
             {initialData ? 'Update Script' : 'Save Script'}
           </button>
         </div>
       </form>
+
+      {showSavedPopup && (
+        <div className="fixed inset-0 flex items-center justify-center z-20">
+          <div className="bg-white p-6 rounded-lg shadow-lg text-center w-72">
+            <div role="alert" className="alert alert-success">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 stroke-current text-green-500" fill="none" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-black">Your script has been saved successfully!</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
