@@ -1628,7 +1628,7 @@ export default function NoteEditor({ initialData, onSave }) {
                     <pre style="background-color: #f9f9f9; padding: 15px; border-radius: 5px; font-size: 14px; color: #333333; overflow-x: auto;">
 ${formData.content}</pre>
                     <p>If you need any further assistance, feel free to reach out.</p>
-                    <p>Best regards,<br/>Your ServiceNow Team</p>
+                    <p>Best regards,<br/>Your ServiceNow Developer Team at Exterprise</p>
                   </td>
                 </tr>
               </table>
