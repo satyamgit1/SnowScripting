@@ -2669,7 +2669,7 @@ export default function LandingPage() {
           </motion.div>
           <div className="hidden md:flex items-center space-x-8">
             <Link href="#features" className="text-gray-700 hover:text-orange-600 transition-colors">Features</Link>
-            <Link href="#testimonials" className="text-gray-700 hover:text-orange-600 transition-colors">Our Reviews</Link>
+            <Link href="/blog" className="text-gray-700 hover:text-orange-600 transition-colors">Blog</Link>
             <Link href="/contact" className="text-gray-700 hover:text-orange-600 transition-colors">Contact Us</Link>
           </div>
           <div className="flex items-center space-x-4">
@@ -3005,33 +3005,25 @@ export default function LandingPage() {
                 </div>
               </div>
               
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Product</h3>
-                <ul className="space-y-3">
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Features</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Pricing</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Integrations</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Updates</a></li>
-                </ul>
-              </div>
+              
               
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Resources</h3>
                 <ul className="space-y-3">
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Documentation</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">API Reference</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Community</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Support</a></li>
+                  <li><a href="https://www.servicenow.com/docs/" className="text-gray-600 hover:text-orange-600 transition-colors">Documentation</a></li>
+                  <li><a href="https://medium.com/@satyamsingh2003a/servicenow-notes-application-apis-e006e32938cb" className="text-gray-600 hover:text-orange-600 transition-colors">API Reference</a></li>
+                  <li><a href="/https://www.servicenow.com/community/" className="text-gray-600 hover:text-orange-600 transition-colors">Community</a></li>
+                  <li><a href="/contact" className="text-gray-600 hover:text-orange-600 transition-colors">Support</a></li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Company</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Exterprise</h3>
                 <ul className="space-y-3">
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">About Us</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Careers</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Blog</a></li>
-                  <li><a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">Contact</a></li>
+                  <li><a href="/About_us" className="text-gray-600 hover:text-orange-600 transition-colors">About Us</a></li>
+          
+                  <li><a href="/blog" className="text-gray-600 hover:text-orange-600 transition-colors">Blog</a></li>
+                  <li><a href="/contact" className="text-gray-600 hover:text-orange-600 transition-colors">Contact</a></li>
                 </ul>
               </div>
             </div>
@@ -3039,8 +3031,8 @@ export default function LandingPage() {
             <div className="mt-16 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-500 mb-4 md:mb-0">© {new Date().getFullYear()} ScriptHub. All rights reserved.</p>
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-500 hover:text-orange-600 transition-colors">Privacy</a>
-                <a href="#" className="text-gray-500 hover:text-orange-600 transition-colors">Terms</a>
+                <a href="/privacy-policy" className="text-gray-500 hover:text-orange-600 transition-colors">Privacy</a>
+                <a href="/Terms" className="text-gray-500 hover:text-orange-600 transition-colors">Terms</a>
                 <a href="#" className="text-gray-500 hover:text-orange-600 transition-colors">Cookies</a>
               </div>
             </div>
