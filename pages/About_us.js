@@ -499,7 +499,7 @@ export default function About() {
                 <div>
                   <h3 className="text-2xl font-bold text-gray-800 mb-1">Higher Secondary School</h3>
                   <p className="text-lg text-gray-600 mb-3">St. Anne's Junior College (2018-2020)</p>
-                  <p className="text-gray-700">Computer Science with 70%. Began freelancing in web development.</p>
+                  <p className="text-gray-700">Computer Science . Began freelancing in software  development.</p>
                 </div>
               </div>
             </motion.div>
