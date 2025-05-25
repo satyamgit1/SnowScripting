@@ -303,7 +303,8 @@ export default function ContactPage() {
           className="flex items-center space-x-3"
         >
           <FaServicestack className="text-3xl text-orange-600" />
-          <span className="text-2xl font-bold text-orange-600">ScriptHub</span>
+          
+          <Link href="/"><span className="text-2xl font-bold text-orange-600">ScriptHub</span></Link>
         </motion.div>
         <div className="hidden md:flex items-center space-x-8">
           <Link href="#features" className="text-gray-700 hover:text-orange-600 transition-colors">Features</Link>
