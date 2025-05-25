@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiMail, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { FaServicestack } from 'react-icons/fa';
 
 // Animation variants
 const container = {
@@ -28,7 +29,33 @@ const hoverEffect = {
 export default function About() {
   return (
     <>
+     <nav className="relative px-6 py-6 flex justify-between items-center max-w-7xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center space-x-3"
+        >
+          <FaServicestack className="text-3xl text-orange-600" />
+          <span className="text-2xl font-bold text-orange-600">ScriptHub</span>
+        </motion.div>
+        <div className="hidden md:flex items-center space-x-8">
+          <Link href="/features" className="text-gray-700 hover:text-orange-600 transition-colors">Features</Link>
+          <Link href="/blog" className="text-gray-700 hover:text-orange-600 transition-colors">Blog</Link>
+          <Link href="/contact" className="text-gray-700 hover:text-orange-600 transition-colors">Contact Us</Link>
+        </div>
+        <div className="flex items-center space-x-4">
+          <Link href="/auth" className="px-4 py-2 text-gray-700 hover:text-orange-600 transition-colors">Sign In</Link>
+          <Link 
+            href="/auth" 
+            className="px-6 py-2.5 bg-orange-600 text-white rounded-lg font-medium hover:bg-orange-700 transition-all shadow-md hover:shadow-orange-500/30"
+          >
+            Get Started
+          </Link>
+        </div>
+      </nav>
       <Head>
+      
         <title>About Us | ScriptHub</title>
         <meta name="description" content="About Satyam Singh - ServiceNow Developer, Full Stack Developer, and Web Development Projects" />
         <link rel="icon" href="/favicon.ico" />
