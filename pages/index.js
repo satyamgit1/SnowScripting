@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiCode, FiLock, FiLayers, FiZap, FiArrowRight, FiCheck, FiStar, FiChevronRight, FiUser, FiShield, FiClock } from 'react-icons/fi';
 import { FaServicestack, FaGithub, FaTwitter } from 'react-icons/fa';
+import SplashCursor from './SplashCursor'
+
 
 export default function LandingPage() {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -77,6 +79,8 @@ export default function LandingPage() {
         <title>ServiceNow Script Hub | Organize & Manage Scripts</title>
         <meta name="description" content="The complete solution for organizing and managing your ServiceNow scripts" />
       </Head>
+      <SplashCursor />
+      
 
       <div className="min-h-screen bg-gradient-to-b from-white to-orange-50">
         {/* Animated background elements */}
