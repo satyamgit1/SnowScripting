@@ -20,16 +20,16 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">My ServiceNow Scripts</h1>
-        <Link 
+    <div>
+      {/* <div className="flex justify-between items-center mb-8"> */}
+        {/* <h1 className="text-3xl font-bold text-gray-800">My ServiceNow Scripts</h1> */}
+        {/* <Link 
           href="/note/new"
           className="bg-orange-500 hover:bg-orange-900 text-white px-4 py-2 rounded-md transition"
         >
           New Script
-        </Link>
-      </div>
+        </Link> */}
+      {/* </div> */}
       <NoteList userId={user.uid} />
     </div>
   );

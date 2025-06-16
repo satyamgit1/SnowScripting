@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink, FiMail, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { FaServicestack } from 'react-icons/fa';
+import CardSwap, { Card } from './CardSwap'
 
 // Animation variants
 const container = {
@@ -599,6 +600,7 @@ export default function About() {
             </motion.div>
           </div>
         </motion.section>
+        
       </div>
     </>
   );
