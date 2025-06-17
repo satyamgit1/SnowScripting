@@ -6,8 +6,8 @@ export default function Blog() {
   return (
     <>
       <Head>
-        <title>Blog | ScriptHub</title>
-        <meta name="description" content="Interesting facts and blog posts about ScriptHub and ServiceNow" />
+        <title>Blog | NowScript</title>
+        <meta name="description" content="Interesting facts and blog posts about NowScript and ServiceNow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

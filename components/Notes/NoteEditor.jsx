@@ -3911,6 +3911,9 @@ import {
 import { useAuth } from "../../services/auth";
 import Editor from "@monaco-editor/react";
 
+
+
+
 export default function NoteEditor({ initialData, onSave }) {
   const { user } = useAuth();
   const [formData, setFormData] = useState(
@@ -4455,6 +4458,7 @@ Sent from ServiceNow Script Manager`;
             <p>Tip: Use <strong>Ctrl+B</strong> to bold selected text or right-click for formatting options</p>
           </div>
         </div>
+
 
         {/* Action Buttons */}
         <div className="flex justify-end space-x-4 pt-4 border-t border-orange-200">

@@ -76,7 +76,7 @@ export default function LandingPage() {
   return (
     <>
       <Head>
-        <title>ServiceNow Script Hub | Organize & Manage Scripts</title>
+        <title> NowScript| Organize & Manage Scripts</title>
         <meta name="description" content="The complete solution for organizing and managing your ServiceNow scripts" />
       </Head>
       <SplashCursor />
@@ -98,7 +98,9 @@ export default function LandingPage() {
             className="flex items-center space-x-3"
           >
             <FaServicestack className="text-3xl text-orange-600" />
-            <span className="text-2xl font-bold text-orange-600">ScriptHub</span>
+            <Link href="/">
+  <span className="text-2xl font-bold text-orange-600">NowScript</span>
+</Link>
           </motion.div>
           <div className="hidden md:flex items-center space-x-8">
             <Link href="#features" className="text-gray-700 hover:text-orange-600 transition-colors">Features</Link>
@@ -427,7 +429,7 @@ export default function LandingPage() {
               <div>
                 <div className="flex items-center space-x-3 mb-6">
                   <FaServicestack className="text-2xl text-orange-600" />
-                  <span className="text-xl font-bold text-orange-600">ScriptHub</span>
+                  <span className="text-xl font-bold text-orange-600">NowScript</span>
                 </div>
                 <p className="text-gray-600 mb-6">The complete solution for ServiceNow script management.</p>
                 <div className="flex space-x-4">
@@ -453,7 +455,7 @@ export default function LandingPage() {
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Exterprise</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">NowScript</h3>
                 <ul className="space-y-3">
                   <li><a href="/About_us" className="text-gray-600 hover:text-orange-600 transition-colors">About Us</a></li>
           

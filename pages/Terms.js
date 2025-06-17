@@ -5,7 +5,7 @@ export default function Terms() {
   return (
     <>
       <Head>
-        <title>Terms and Conditions | ScriptHub</title>
+        <title>Terms and Conditions | NowScript</title>
         <meta name="description" content="Terms and Conditions for ScriptHub" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -13,7 +13,7 @@ export default function Terms() {
       {/* Navbar */}
       <nav className="flex justify-between items-center p-4 bg-white shadow-md">
         <div className="text-2xl font-bold text-orange-600">
-          <Link href="/">ScriptHub</Link>
+          <Link href="/">NowScript</Link>
         </div>
         <div className="space-x-6">
           <Link href="/" className="text-gray-800 hover:text-orange-600">Home</Link>
