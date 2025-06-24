@@ -3104,7 +3104,7 @@ export default function LandingPage() {
                 <ul className="space-y-3">
                   <li>
                     <a
-                      href="/about"
+                      href="/About_us"
                       className="hover:text-white transition-colors"
                     >
                       About Us
