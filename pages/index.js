@@ -2602,18 +2602,8 @@ export default function LandingPage() {
                 </Link>
               </div>
               
-              <div className="flex items-center space-x-4 text-sm text-gray-500">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map((i) => (
-                    <img 
-                      key={i}
-                      src={`/user${i}.jpg`}
-                      alt="User"
-                      className="w-8 h-8 rounded-full border-2 border-gray-800"
-                    />
-                  ))}
-                </div>
-                <span>Trusted by 850+ ServiceNow developers</span>
+              <div className="flex items-center space-x-4 text-md text-gray-500">
+                <span>Build By ServiceNow Developer for the ServiceNow Developer</span>
               </div>
             </motion.div>
 
@@ -2739,16 +2729,15 @@ export default function LandingPage() {
             <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
               {['acme', 'globex', 'stark', 'wayne', 'oscorp'].map((company) => (
                 <motion.div
-                  key={company}
-                  whileHover={{ scale: 1.1 }}
-                  className="opacity-60 hover:opacity-100 transition-opacity"
-                >
-                  <img 
-                    src={`/${company}-logo.svg`} 
-                    alt={company} 
-                    className="h-8"
-                  />
-                </motion.div>
+  whileHover={{ scale: 1.1 }}
+  className=" transition-opacity"
+>
+  <img 
+    src="/exterprise.png" 
+    alt="exterprise logo" 
+    className="h-8"
+  />
+</motion.div>
               ))}
             </div>
           </div>
