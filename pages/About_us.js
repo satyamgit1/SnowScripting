@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiMail, FiLinkedin, FiTwitter, FiGrid, FiStar, FiBook, FiMail as FiContact } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiMail, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { FaServicestack } from 'react-icons/fa';
 import CardSwap, { Card } from './CardSwap'
 
@@ -30,35 +30,26 @@ const hoverEffect = {
 export default function About() {
   return (
     <>
-     <nav className="relative px-6 py-6 flex justify-between items-center max-w-7xl mx-auto bg-gray-800">
+     <nav className="relative px-6 py-6 flex justify-between items-center max-w-7xl mx-auto bg-gray-900">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="flex items-center space-x-3"
         >
-          <FaServicestack className="text-3xl text-emerald-400" />
-          <span className="text-2xl font-bold text-emerald-400">ScriptHub</span>
+          <FaServicestack className="text-3xl text-emerald-500" />
+          <span className="text-2xl font-bold text-emerald-500">NowScript</span>
         </motion.div>
         <div className="hidden md:flex items-center space-x-8">
-          <Link href="/features" className="flex items-center space-x-2 text-gray-300 hover:text-emerald-400 transition-colors">
-            <FiGrid className="w-5 h-5" />
-            <span>Features</span>
-          </Link>
-          <Link href="/blog" className="flex items-center space-x-2 text-gray-300 hover:text-emerald-400 transition-colors">
-            <FiBook className="w-5 h-5" />
-            <span>Blog</span>
-          </Link>
-          <Link href="/contact" className="flex items-center space-x-2 text-gray-300 hover:text-emerald-400 transition-colors">
-            <FiContact className="w-5 h-5" />
-            <span>Contact Us</span>
-          </Link>
+          <Link href="/features" className="text-gray-300 hover:text-emerald-400 transition-colors">Features</Link>
+          <Link href="/blog" className="text-gray-300 hover:text-emerald-400 transition-colors">Blog</Link>
+          <Link href="/contact" className="text-gray-300 hover:text-emerald-400 transition-colors">Contact Us</Link>
         </div>
         <div className="flex items-center space-x-4">
           <Link href="/auth" className="px-4 py-2 text-gray-300 hover:text-emerald-400 transition-colors">Sign In</Link>
           <Link 
             href="/auth" 
-            className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-700 text-white rounded-lg font-medium hover:from-emerald-600 hover:to-emerald-800 transition-all shadow-md hover:shadow-emerald-500/30"
+            className="px-6 py-2.5 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition-all shadow-md hover:shadow-emerald-500/30"
           >
             Get Started
           </Link>
@@ -70,7 +61,7 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-gray-900 min-h-screen">
+      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen">
         {/* Hero Section */}
         <motion.section 
           initial={{ opacity: 0 }}
@@ -94,7 +85,7 @@ export default function About() {
           </motion.div>
           
           <motion.h1 
-            className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600 mb-6"
+            className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500 mb-6"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -144,7 +135,7 @@ export default function About() {
           className="container mx-auto px-4 py-16"
         >
           <motion.h2 
-            className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600"
+            className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500"
             variants={item}
           >
             Professional Journey
@@ -186,13 +177,13 @@ export default function About() {
 
             {/* Experience 2 */}
             <motion.div 
-              className="bg-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-emerald-400"
+              className="bg-gray-800 p-8 rounded-xl shadow-lg border-l-4 border-teal-500"
               variants={item}
               whileHover={hoverEffect}
             >
               <div className="flex items-center mb-4">
-                <div className="bg-emerald-900 p-3 rounded-full mr-4">
-                  <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-teal-900 p-3 rounded-full mr-4">
+                  <svg className="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
@@ -203,15 +194,15 @@ export default function About() {
               </div>
               <ul className="space-y-3 text-gray-300">
                 <li className="flex items-start">
-                  <span className="text-emerald-400 mr-2">•</span>
+                  <span className="text-teal-400 mr-2">•</span>
                   Built responsive web applications using modern JavaScript frameworks
                 </li>
                 <li className="flex items-start">
-                  <span className="text-emerald-400 mr-2">•</span>
+                  <span className="text-teal-400 mr-2">•</span>
                   Implemented RESTful APIs and database architectures
                 </li>
                 <li className="flex items-start">
-                  <span className="text-emerald-400 mr-2">•</span>
+                  <span className="text-teal-400 mr-2">•</span>
                   Optimized applications for performance and user experience
                 </li>
               </ul>
@@ -220,9 +211,9 @@ export default function About() {
         </motion.section>
 
         {/* Projects Section */}
-        <section className="container mx-auto px-4 py-16 bg-gray-800">
+        <section className="container mx-auto px-4 py-16 bg-gradient-to-br from-gray-900 to-gray-800">
           <motion.h2 
-            className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600"
+            className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -241,7 +232,7 @@ export default function About() {
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
             >
-              <div className="h-48 bg-gradient-to-r from-emerald-500 to-emerald-700 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-r from-emerald-600 to-teal-700 flex items-center justify-center">
                 <span className="text-white text-xl font-bold">SocietySathi</span>
               </div>
               <div className="p-6">
@@ -278,7 +269,7 @@ export default function About() {
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
             >
-              <div className="h-48 bg-gradient-to-r from-emerald-600 to-emerald-800 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-r from-teal-600 to-emerald-700 flex items-center justify-center">
                 <span className="text-white text-xl font-bold">Varuna Realty</span>
               </div>
               <div className="p-6">
@@ -290,7 +281,7 @@ export default function About() {
                     href="https://github.com/satyamgit1/varunarealty" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-sm text-emerald-400 hover:text-emerald-300"
+                    className="flex items-center text-sm text-teal-400 hover:text-teal-300"
                   >
                     <FiGithub className="mr-1" /> Code
                   </a>
@@ -298,7 +289,7 @@ export default function About() {
                     href="https://www.varunarealty.com/" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center text-sm text-emerald-400 hover:text-emerald-300"
+                    className="flex items-center text-sm text-teal-400 hover:text-teal-300"
                   >
                     <FiExternalLink className="mr-1" /> Live Demo
                   </a>
@@ -315,7 +306,7 @@ export default function About() {
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
             >
-              <div className="h-48 bg-gradient-to-r from-emerald-400 to-emerald-600 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-r from-emerald-500 to-teal-600 flex items-center justify-center">
                 <span className="text-white text-xl font-bold">JavaScript Quiz</span>
               </div>
               <div className="p-6">
@@ -342,6 +333,117 @@ export default function About() {
                 </div>
               </div>
             </motion.div>
+
+            {/* Project 4 - Bhagavad-gita */}
+            <motion.div 
+              className="bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-700"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+            >
+              <div className="h-48 bg-gradient-to-r from-teal-500 to-emerald-600 flex items-center justify-center">
+                <span className="text-white text-xl font-bold">Bhagavad-gita</span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-100">Scripture Exploration Platform</h3>
+                <p className="text-gray-400 mb-4">Next.js, Tailwind CSS, API Integration</p>
+                <p className="text-gray-300 mb-6">Interactive platform for exploring the Bhagavad Gita with dynamic chapter and verse retrieval.</p>
+                <div className="flex space-x-3">
+                  <a 
+                    href="https://github.com/satyamgit1/bhagavad_gita" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm text-teal-400 hover:text-teal-300"
+                  >
+                    <FiGithub className="mr-1" /> Code
+                  </a>
+                  <a 
+                    href="https://bhagavad-gita-bm6e-git-main-satyamgit1s-projects.vercel.app/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm text-teal-400 hover:text-teal-300"
+                  >
+                    <FiExternalLink className="mr-1" /> Live Demo
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Project 5 - Portfolio */}
+            <motion.div 
+              className="bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-700"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+            >
+              <div className="h-48 bg-gradient-to-r from-emerald-600 to-teal-700 flex items-center justify-center">
+                <span className="text-white text-xl font-bold">My Portfolio</span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-100">Personal Portfolio</h3>
+                <p className="text-gray-400 mb-4">Next.js, Tailwind CSS, Framer Motion</p>
+                <p className="text-gray-300 mb-6">A showcase of my skills, projects, and professional journey with interactive animations.</p>
+                <div className="flex space-x-3">
+                  <a 
+                    href="https://github.com/satyamgit1/portfolio" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm text-emerald-400 hover:text-emerald-300"
+                  >
+                    <FiGithub className="mr-1" /> Code
+                  </a>
+                  <a 
+                    href="https://portfolio-flame-two-34.vercel.app/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm text-emerald-400 hover:text-emerald-300"
+                  >
+                    <FiExternalLink className="mr-1" /> Live Demo
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Project 6 - Codeverse */}
+            <motion.div 
+              className="bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-700"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+            >
+              <div className="h-48 bg-gradient-to-r from-teal-600 to-emerald-700 flex items-center justify-center">
+                <span className="text-white text-xl font-bold">Codeverse</span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-100">Real-time Code Editor</h3>
+                <p className="text-gray-400 mb-4">React, Next.js, Firebase, Tailwind CSS</p>
+                <p className="text-gray-300 mb-6">Collaborative coding environment with live previews, authentication, and project management.</p>
+                <div className="flex space-x-3">
+                  <a 
+                    href="https://github.com/satyamgit1/CodeVerse" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm text-teal-400 hover:text-teal-300"
+                  >
+                    <FiGithub className="mr-1" /> Code
+                  </a>
+                  <a 
+                    href="https://code-verse-xi.vercel.app/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm text-teal-400 hover:text-teal-300"
+                  >
+                    <FiExternalLink className="mr-1" /> Live Demo
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -353,7 +455,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+          <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">
             Education
           </h2>
           
@@ -389,8 +491,8 @@ export default function About() {
               viewport={{ once: true }}
             >
               <div className="flex items-start">
-                <div className="bg-emerald-900 p-3 rounded-full mr-6 mt-1">
-                  <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-teal-900 p-3 rounded-full mr-6 mt-1">
+                  <svg className="w-6 h-6 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                   </svg>
                 </div>
@@ -401,12 +503,32 @@ export default function About() {
                 </div>
               </div>
             </motion.div>
+            
+            {/* Education Item 3 */}
+            <motion.div 
+              whileInView={{ x: [50, 0], opacity: [0, 1] }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-start">
+                <div className="bg-emerald-900 p-3 rounded-full mr-6 mt-1">
+                  <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-100 mb-1">Secondary School Education</h3>
+                  <p className="text-lg text-gray-400 mb-3">St. Francis High School (2017-2018)</p>
+                  <p className="text-gray-300">Developed discipline and teamwork through academics and sports.</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.section>
 
         {/* Contact Section */}
         <motion.section 
-          className="bg-gradient-to-r from-emerald-600 to-emerald-800 py-20 px-4 text-white"
+          className="bg-gradient-to-r from-emerald-600 to-teal-700 py-20 px-4 text-white"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -454,7 +576,7 @@ export default function About() {
                 href="https://github.com/satyamgit1" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-emerald-300 transition-colors"
+                className="text-white hover:text-emerald-200 transition-colors"
               >
                 <FiGithub className="w-6 h-6" />
               </a>
@@ -462,7 +584,7 @@ export default function About() {
                 href="https://www.linkedin.com/in/satyam-singh-612415223/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-emerald-300 transition-colors"
+                className="text-white hover:text-emerald-200 transition-colors"
               >
                 <FiLinkedin className="w-6 h-6" />
               </a>
@@ -470,7 +592,7 @@ export default function About() {
                 href="https://twitter.com/satyamgit1" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-emerald-300 transition-colors"
+                className="text-white hover:text-emerald-200 transition-colors"
               >
                 <FiTwitter className="w-6 h-6" />
               </a>
