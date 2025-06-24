@@ -1592,6 +1592,796 @@
 //     </>
 //   );
 // }
+
+// import { useState, useEffect, useRef } from "react";
+// import Link from "next/link";
+// import Head from "next/head";
+// import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+// import {
+//   FiCode,
+//   FiLock,
+//   FiLayers,
+//   FiZap,
+//   FiArrowRight,
+//   FiCheck,
+//   FiStar,
+//   FiChevronRight,
+//   FiUser,
+//   FiShield,
+//   FiClock,
+// } from "react-icons/fi";
+// import { FaServicestack, FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+// import BlurText from "./BlurText";
+// import Header from "pages/Header";
+
+// export default function LandingPage() {
+//   const [activeFeature, setActiveFeature] = useState(0);
+//   const [activeTestimonial, setActiveTestimonial] = useState(0);
+//   const containerRef = useRef(null);
+  
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start start", "end end"]
+//   });
+
+//   // Vibrant teal-to-purple gradient color scheme
+//   const colors = {
+//     primary: "from-teal-500 to-purple-600",
+//     primaryText: "text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-purple-600",
+//     primaryHover: "hover:from-teal-600 hover:to-purple-700",
+//     primaryBorder: "border-teal-500",
+//     secondary: "bg-gray-900",
+//     accent: "bg-pink-500",
+//     light: "bg-gray-50",
+//     dark: "bg-gray-900"
+//   };
+
+//   const features = [
+//     {
+//       icon: <FiCode className="w-6 h-6" />,
+//       title: "Universal Script Support",
+//       description: "Store every type of ServiceNow script with proper syntax highlighting",
+//       extended: "From Business Rules to UI Policies, we support all script types with intelligent recognition and formatting.",
+//       color: "bg-teal-100 text-teal-600"
+//     },
+//     {
+//       icon: <FiLock className="w-6 h-6" />,
+//       title: "Bank-Level Security",
+//       description: "Enterprise-grade encryption and access controls",
+//       extended: "256-bit encryption, regular backups, and granular permission controls ensure your scripts are always protected.",
+//       color: "bg-purple-100 text-purple-600"
+//     },
+//     {
+//       icon: <FiLayers className="w-6 h-6" />,
+//       title: "Project Workspaces",
+//       description: "Organize scripts by project, client, or instance",
+//       extended: "Create dedicated workspaces for each project with team collaboration features and custom tagging systems.",
+//       color: "bg-blue-100 text-blue-600"
+//     },
+//     {
+//       icon: <FiZap className="w-6 h-6" />,
+//       title: "Instant Search",
+//       description: "Find any script in milliseconds",
+//       extended: "Full-text search across all your scripts with filters for script type, date modified, and custom tags.",
+//       color: "bg-pink-100 text-pink-600"
+//     }
+//   ];
+
+//   const testimonials = [
+//     {
+//       name: "Akash Landge",
+//       role: "ServiceNow Developer",
+//       company: "Exterprise Services",
+//       quote: "This tool cut our script retrieval time by 80%. The organization system is exactly what our team needed.",
+//       rating: 5,
+//       image: "/akash.png"
+//     },
+//     {
+//       name: "Prakshal Jain",
+//       role: "Lead Developer",
+//       company: "Exterprise Services",
+//       quote: "Finally a solution that understands how ServiceNow developers actually work. The snippet library alone is worth the price.",
+//       rating: 5,
+//       image: "/jain.png"
+//     },
+//     {
+//       name: "Aditya Gupta",
+//       role: "ServiceNow Developer",
+//       company: "Exterprise Services",
+//       quote: "Our team collaboration improved dramatically after adopting this. The version history has saved us countless hours.",
+//       rating: 4,
+//       image: "/aditya.png"
+//     }
+//   ];
+
+//   const stats = [
+//     {
+//       icon: <FiUser className="w-6 h-6" />,
+//       value: "850+",
+//       label: "Active Developers",
+//       color: "bg-teal-100 text-teal-600"
+//     },
+//     {
+//       icon: <FiCode className="w-6 h-6" />,
+//       value: "12K+",
+//       label: "Scripts Stored",
+//       color: "bg-purple-100 text-purple-600"
+//     },
+//     {
+//       icon: <FiShield className="w-6 h-6" />,
+//       value: "100%",
+//       label: "Uptime Reliability",
+//       color: "bg-blue-100 text-blue-600"
+//     },
+//     {
+//       icon: <FiClock className="w-6 h-6" />,
+//       value: "10x",
+//       label: "Faster Retrieval",
+//       color: "bg-pink-100 text-pink-600"
+//     }
+//   ];
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setActiveFeature((prev) => (prev + 1) % features.length);
+//     }, 4000);
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   useEffect(() => {
+//     const testimonialInterval = setInterval(() => {
+//       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+//     }, 5000);
+//     return () => clearInterval(testimonialInterval);
+//   }, []);
+
+//   return (
+//     <>
+//       <Head>
+//         <title>NowScript | Organize & Manage ServiceNow Scripts</title>
+//         <meta name="description" content="The complete solution for organizing and managing your ServiceNow scripts" />
+//         <link rel="icon" href="/favicon.ico" />
+//       </Head>
+//        <Header/>
+//       <div className="min-h-screen bg-white overflow-x-hidden" ref={containerRef}>
+//         {/* Floating gradient background elements */}
+//         <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+//           <motion.div 
+//             className="absolute top-1/4 -right-20 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+//             animate={{
+//               x: [0, -30, 0],
+//               y: [0, 40, 0],
+//               scale: [1, 1.1, 1]
+//             }}
+//             transition={{
+//               duration: 15,
+//               repeat: Infinity,
+//               ease: "easeInOut"
+//             }}
+//           />
+//           <motion.div 
+//             className="absolute bottom-1/3 -left-20 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+//             animate={{
+//               x: [0, 30, 0],
+//               y: [0, -40, 0],
+//               scale: [1, 1.1, 1]
+//             }}
+//             transition={{
+//               duration: 15,
+//               repeat: Infinity,
+//               ease: "easeInOut",
+//               delay: 5
+//             }}
+//           />
+//         </div>
+
+//         {/* Hero Section */}
+//         <section className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+//           <div className="grid lg:grid-cols-2 gap-16 items-center">
+//             <motion.div
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.6 }}
+//             >
+//               <div className="inline-flex items-center px-3 py-1 rounded-full bg-teal-100 text-teal-600 text-sm font-medium mb-4">
+//                 <span className="mr-2">✨</span> Now available for all teams
+//               </div>
+//               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
+//                 <span className={colors.primaryText}>Organize</span> Your ServiceNow Scripts Like Never Before
+//               </h1>
+              
+//               <BlurText
+//                 text="The ultimate platform for ServiceNow developers to store, manage, and instantly access all scripts in one beautifully organized workspace."
+//                 delay={150}
+//                 animateBy="words"
+//                 direction="top"
+//                 className="text-xl text-gray-600 mb-8 max-w-2xl"
+//               />
+              
+//               <div className="flex flex-col sm:flex-row gap-4 mb-8">
+//                 <Link
+//                   href="/register"
+//                   className={`px-8 py-4 bg-gradient-to-r ${colors.primary} text-white rounded-xl font-medium hover:opacity-90 transition-all shadow-lg hover:shadow-teal-500/30 flex items-center justify-center ${colors.primaryHover}`}
+//                 >
+//                   Start Free Trial <FiArrowRight className="ml-2 animate-pulse" />
+//                 </Link>
+//                 <Link
+//                   href="#demo"
+//                   className="px-8 py-4 border border-gray-300 text-gray-700 rounded-xl font-medium hover:border-teal-600 hover:text-teal-600 transition-colors flex items-center justify-center"
+//                 >
+//                   Watch Demo
+//                 </Link>
+//               </div>
+              
+//               <div className="flex items-center space-x-4 text-sm text-gray-500">
+//                 <div className="flex -space-x-2">
+//                   {[1, 2, 3].map((i) => (
+//                     <img 
+//                       key={i}
+//                       src={`/user${i}.jpg`}
+//                       alt="User"
+//                       className="w-8 h-8 rounded-full border-2 border-white"
+//                     />
+//                   ))}
+//                 </div>
+//                 <span>Trusted by 850+ ServiceNow developers</span>
+//               </div>
+//             </motion.div>
+
+//             <motion.div
+//               initial={{ opacity: 0, y: 20 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.6, delay: 0.2 }}
+//               className="relative"
+//             >
+//               <div className="relative bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-2xl">
+//                 <div className="px-5 py-3 bg-gray-50 flex items-center border-b border-gray-200">
+//                   <div className="flex items-center space-x-2">
+//                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
+//                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+//                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
+//                   </div>
+//                   <div className="text-sm text-gray-500 ml-4">
+//                     script-include.js
+//                   </div>
+//                 </div>
+//                 <div className="p-6 font-mono text-sm bg-gradient-to-br from-gray-50 to-white">
+//                   <div className="text-teal-500">
+//                     // Script Include: DataUtils
+//                   </div>
+//                   <div className="text-purple-500">var</div>{" "}
+//                   <span className="text-blue-500">DataUtils</span>{" "}
+//                   <span className="text-gray-700">= Class.create();</span>
+//                   <div className="text-purple-500">DataUtils</div>{" "}
+//                   <span className="text-gray-700">.prototype = {"{"}</span>
+//                   <div className="ml-4 text-gray-700">
+//                     <span className="text-purple-500">initialize</span>{" "}
+//                     <span className="text-gray-700">: </span>
+//                     <span className="text-purple-500">function</span>
+//                     <span className="text-gray-700">() {"{"}</span>
+//                   </div>
+//                   <div className="ml-8 text-gray-700">
+//                     <span className="text-green-600">
+//                       // Initialization code
+//                     </span>
+//                   </div>
+//                   <div className="ml-4 text-gray-700">{"},"}</div>
+//                   <div className="ml-4">
+//                     <span className="text-purple-500">getUserData</span>{" "}
+//                     <span className="text-gray-700">: </span>
+//                     <span className="text-purple-500">function</span>
+//                     <span className="text-gray-700">(userId) {"{"}</span>
+//                   </div>
+//                   <div className="ml-8">
+//                     <span className="text-purple-500">var</span>{" "}
+//                     <span className="text-blue-500">gr</span>{" "}
+//                     <span className="text-gray-700">= new GlideRecord(</span>
+//                     <span className="text-green-600">'sys_user'</span>
+//                     <span className="text-gray-700">);</span>
+//                   </div>
+//                   <div className="ml-8">
+//                     <span className="text-blue-500">gr</span>
+//                     <span className="text-gray-700">.addQuery(</span>
+//                     <span className="text-green-600">'sys_id'</span>
+//                     <span className="text-gray-700">, userId);</span>
+//                   </div>
+//                   <div className="ml-8">
+//                     <span className="text-blue-500">gr</span>
+//                     <span className="text-gray-700">.query();</span>
+//                   </div>
+//                   <div className="ml-8">
+//                     <span className="text-purple-500">if</span>{" "}
+//                     <span className="text-gray-700">(</span>
+//                     <span className="text-blue-500">gr</span>
+//                     <span className="text-gray-700">.next()) {"{"}</span>
+//                   </div>
+//                   <div className="ml-12">
+//                     <span className="text-purple-500">return</span>{" "}
+//                     <span className="text-blue-500">gr</span>
+//                     <span className="text-gray-700">.getValue(</span>
+//                     <span className="text-green-600">'name'</span>
+//                     <span className="text-gray-700">);</span>
+//                   </div>
+//                   <div className="ml-8 text-gray-700">{"}"}</div>
+//                   <div className="ml-8">
+//                     <span className="text-purple-500">return</span>{" "}
+//                     <span className="text-green-600">''</span>
+//                     <span className="text-gray-700">;</span>
+//                   </div>
+//                   <div className="ml-4 text-gray-700">{"}"}</div>
+//                   <div className="text-gray-700">{"};"}</div>
+//                 </div>
+//               </div>
+              
+//               {/* Floating elements around the code editor */}
+//               <motion.div 
+//                 className="absolute -bottom-6 -left-6 w-32 h-32 bg-teal-100 rounded-2xl -z-10"
+//                 animate={{
+//                   rotate: [0, 5, 0],
+//                   scale: [1, 1.05, 1]
+//                 }}
+//                 transition={{
+//                   duration: 8,
+//                   repeat: Infinity,
+//                   ease: "easeInOut"
+//                 }}
+//               />
+//               <motion.div 
+//                 className="absolute -top-6 -right-6 w-24 h-24 bg-purple-100 rounded-full -z-10"
+//                 animate={{
+//                   rotate: [0, -5, 0],
+//                   scale: [1, 1.05, 1]
+//                 }}
+//                 transition={{
+//                   duration: 8,
+//                   repeat: Infinity,
+//                   ease: "easeInOut",
+//                   delay: 2
+//                 }}
+//               />
+//             </motion.div>
+//           </div>
+//         </section>
+
+//         {/* Logo cloud */}
+//         <section className="py-12 bg-gradient-to-r from-teal-50 to-purple-50">
+//           <div className="max-w-7xl mx-auto px-6">
+//             <p className="text-center text-gray-500 mb-8">Trusted by teams at</p>
+//             <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
+//               {['acme', 'globex', 'stark', 'wayne', 'oscorp'].map((company) => (
+//                 <motion.div
+//                   key={company}
+//                   whileHover={{ scale: 1.1 }}
+//                   className="opacity-60 hover:opacity-100 transition-opacity"
+//                 >
+//                   <img 
+//                     src={`/${company}-logo.svg`} 
+//                     alt={company} 
+//                     className="h-8"
+//                   />
+//                 </motion.div>
+//               ))}
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Features Section */}
+//         <section id="features" className="py-20">
+//           <div className="max-w-7xl mx-auto px-6">
+//             <motion.div
+//               initial={{ opacity: 0, y: 20 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               viewport={{ once: true, margin: "-100px" }}
+//               transition={{ duration: 0.5 }}
+//               className="text-center mb-16"
+//             >
+//               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+//                 Power Up Your <span className={colors.primaryText}>ServiceNow</span> Development
+//               </h2>
+//               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+//                 Everything you need to manage scripts efficiently and collaborate seamlessly
+//               </p>
+//             </motion.div>
+
+//             <div className="grid lg:grid-cols-2 gap-12 items-center">
+//               <div className="space-y-6">
+//                 {features.map((feature, index) => (
+//                   <motion.div
+//                     key={index}
+//                     initial={{ opacity: 0, x: -20 }}
+//                     whileInView={{ opacity: 1, x: 0 }}
+//                     viewport={{ once: true, margin: "-50px" }}
+//                     transition={{ duration: 0.5, delay: index * 0.1 }}
+//                     onMouseEnter={() => setActiveFeature(index)}
+//                     className={`p-6 rounded-xl cursor-pointer transition-all ${
+//                       activeFeature === index
+//                         ? "bg-white shadow-lg border border-gray-200"
+//                         : "bg-gray-50 hover:bg-gray-100"
+//                     }`}
+//                   >
+//                     <div className="flex items-start space-x-4">
+//                       <div className={`p-3 rounded-lg ${feature.color} ${activeFeature === index ? 'scale-110' : ''} transition-transform`}>
+//                         {feature.icon}
+//                       </div>
+//                       <div>
+//                         <h3 className="text-xl font-semibold text-gray-900 mb-2">
+//                           {feature.title}
+//                         </h3>
+//                         <p className="text-gray-600">{feature.description}</p>
+//                       </div>
+//                     </div>
+//                   </motion.div>
+//                 ))}
+//               </div>
+
+//               <motion.div
+//                 initial={{ opacity: 0, scale: 0.9 }}
+//                 whileInView={{ opacity: 1, scale: 1 }}
+//                 viewport={{ once: true, margin: "-100px" }}
+//                 transition={{ duration: 0.5 }}
+//                 className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 h-full"
+//               >
+//                 <AnimatePresence mode="wait">
+//                   <motion.div
+//                     key={activeFeature}
+//                     initial={{ opacity: 0 }}
+//                     animate={{ opacity: 1 }}
+//                     exit={{ opacity: 0 }}
+//                     transition={{ duration: 0.3 }}
+//                     className="h-full flex flex-col"
+//                   >
+//                     <div className="flex items-center mb-6">
+//                       <div className={`p-3 rounded-lg ${features[activeFeature].color} mr-4`}>
+//                         {features[activeFeature].icon}
+//                       </div>
+//                       <h3 className="text-2xl font-semibold text-gray-900">
+//                         {features[activeFeature].title}
+//                       </h3>
+//                     </div>
+//                     <p className="text-gray-600 mb-6 text-lg">
+//                       {features[activeFeature].extended}
+//                     </p>
+//                     <div className="mt-auto bg-gray-50 p-4 rounded-lg border border-gray-200">
+//                       <div className="flex items-center space-x-2 text-teal-600">
+//                         <FiCheck className="w-5 h-5" />
+//                         <span className="font-medium">
+//                           Included in all plans
+//                         </span>
+//                       </div>
+//                     </div>
+//                   </motion.div>
+//                 </AnimatePresence>
+//               </motion.div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Stats Section */}
+//         <section className="py-20 bg-gradient-to-r from-teal-50 to-purple-50">
+//           <div className="max-w-7xl mx-auto px-6">
+//             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+//               {stats.map((stat, index) => (
+//                 <motion.div
+//                   key={index}
+//                   initial={{ opacity: 0, y: 20 }}
+//                   whileInView={{ opacity: 1, y: 0 }}
+//                   viewport={{ once: true, margin: "-50px" }}
+//                   transition={{ duration: 0.5, delay: index * 0.1 }}
+//                   className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+//                 >
+//                   <div className={`w-14 h-14 mx-auto mb-4 rounded-full ${stat.color} flex items-center justify-center`}>
+//                     {stat.icon}
+//                   </div>
+//                   <div className="text-3xl font-bold text-gray-900 mb-2 text-center">
+//                     {stat.value}
+//                   </div>
+//                   <div className="text-gray-600 text-center">{stat.label}</div>
+//                 </motion.div>
+//               ))}
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Testimonials */}
+//         <section id="testimonials" className="py-20 bg-white">
+//           <div className="max-w-7xl mx-auto px-6">
+//             <motion.div
+//               initial={{ opacity: 0, y: 20 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               viewport={{ once: true, margin: "-100px" }}
+//               transition={{ duration: 0.5 }}
+//               className="text-center mb-16"
+//             >
+//               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+//                 Trusted by <span className={colors.primaryText}>ServiceNow</span> Teams
+//               </h2>
+//               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+//                 Don't just take our word for it - hear from our users
+//               </p>
+//             </motion.div>
+
+//             <div className="relative h-96">
+//               {testimonials.map((testimonial, index) => (
+//                 <motion.div
+//                   key={index}
+//                   className={`absolute inset-0 bg-white p-8 rounded-2xl shadow-md flex flex-col ${activeTestimonial === index ? 'z-10' : 'z-0'}`}
+//                   initial={{ opacity: 0, x: index % 2 === 0 ? 100 : -100 }}
+//                   animate={{ 
+//                     opacity: activeTestimonial === index ? 1 : 0.3,
+//                     x: activeTestimonial === index ? 0 : (index % 2 === 0 ? 50 : -50),
+//                     scale: activeTestimonial === index ? 1 : 0.9
+//                   }}
+//                   transition={{ duration: 0.5 }}
+//                 >
+//                   <div className="flex items-center mb-6">
+//                     <img
+//                       src={testimonial.image}
+//                       alt={testimonial.name}
+//                       className="w-12 h-12 rounded-full mr-4 object-cover"
+//                     />
+//                     <div>
+//                       <h4 className="font-semibold text-gray-900">
+//                         {testimonial.name}
+//                       </h4>
+//                       <p className="text-sm text-gray-500">
+//                         {testimonial.role}, {testimonial.company}
+//                       </p>
+//                     </div>
+//                   </div>
+//                   <p className="text-gray-600 mb-6 text-lg italic flex-1">
+//                     "{testimonial.quote}"
+//                   </p>
+//                   <div className="flex items-center">
+//                     {[...Array(5)].map((_, star) => (
+//                       <FiStar
+//                         key={star}
+//                         className={`w-5 h-5 ${
+//                           star < testimonial.rating
+//                             ? "text-yellow-500 fill-yellow-500"
+//                             : "text-gray-300"
+//                         }`}
+//                       />
+//                     ))}
+//                   </div>
+//                 </motion.div>
+//               ))}
+              
+//               <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 z-20">
+//                 {testimonials.map((_, index) => (
+//                   <button
+//                     key={index}
+//                     onClick={() => setActiveTestimonial(index)}
+//                     className={`w-3 h-3 rounded-full transition-all ${activeTestimonial === index ? 'bg-teal-600 w-6' : 'bg-gray-300'}`}
+//                   />
+//                 ))}
+//               </div>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* CTA Section */}
+//         <section className="py-20 bg-gradient-to-br from-teal-600 to-purple-600 text-white">
+//           <div className="max-w-4xl mx-auto px-6 text-center">
+//             <motion.div
+//               initial={{ opacity: 0, scale: 0.9 }}
+//               whileInView={{ opacity: 1, scale: 1 }}
+//               viewport={{ once: true, margin: "-100px" }}
+//               transition={{ duration: 0.5 }}
+//             >
+//               <h2 className="text-3xl md:text-4xl font-bold mb-8">
+//                 Ready to Transform Your <span className="text-white">ServiceNow</span> Workflow?
+//               </h2>
+//               <p className="text-xl mb-10 max-w-3xl mx-auto opacity-90">
+//                 Join hundreds of developers who are saving hours every week with organized, accessible scripts
+//               </p>
+//               <div className="flex flex-col sm:flex-row justify-center gap-4">
+//                 <Link
+//                   href="/register"
+//                   className="px-8 py-4 bg-white text-teal-600 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
+//                 >
+//                   Start Free Trial
+//                 </Link>
+//                 <Link
+//                   href="#demo"
+//                   className="px-8 py-4 border-2 border-white text-white rounded-xl font-medium hover:bg-white hover:text-teal-600 transition-all"
+//                 >
+//                   Schedule Demo
+//                 </Link>
+//               </div>
+//             </motion.div>
+//           </div>
+//         </section>
+
+//         {/* Footer */}
+//         <footer className="py-16 bg-gray-900 text-gray-400">
+//           <div className="max-w-7xl mx-auto px-6">
+//             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+//               <div>
+//                 <div className="flex items-center space-x-3 mb-6">
+//                   <FaServicestack className="text-2xl text-teal-400" />
+//                   <span className="text-xl font-bold text-white">
+//                     NowScript
+//                   </span>
+//                 </div>
+//                 <p className="mb-6">
+//                   The complete solution for ServiceNow script management.
+//                 </p>
+//                 <div className="flex space-x-4">
+//                   <a
+//                     href="#"
+//                     className="text-gray-400 hover:text-white transition-colors"
+//                   >
+//                     <FaTwitter className="w-5 h-5" />
+//                   </a>
+//                   <a
+//                     href="#"
+//                     className="text-gray-400 hover:text-white transition-colors"
+//                   >
+//                     <FaGithub className="w-5 h-5" />
+//                   </a>
+//                   <a
+//                     href="#"
+//                     className="text-gray-400 hover:text-white transition-colors"
+//                   >
+//                     <FaLinkedin className="w-5 h-5" />
+//                   </a>
+//                 </div>
+//               </div>
+
+//               <div>
+//                 <h3 className="text-lg font-semibold text-white mb-4">
+//                   Product
+//                 </h3>
+//                 <ul className="space-y-3">
+//                   <li>
+//                     <a
+//                       href="#features"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Features
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="#"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Pricing
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="#"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Integrations
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="#"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Changelog
+//                     </a>
+//                   </li>
+//                 </ul>
+//               </div>
+
+//               <div>
+//                 <h3 className="text-lg font-semibold text-white mb-4">
+//                   Resources
+//                 </h3>
+//                 <ul className="space-y-3">
+//                   <li>
+//                     <a
+//                       href="#"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Documentation
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="#"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       API Reference
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="#"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Community
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="#"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Support
+//                     </a>
+//                   </li>
+//                 </ul>
+//               </div>
+
+//               <div>
+//                 <h3 className="text-lg font-semibold text-white mb-4">
+//                   Company
+//                 </h3>
+//                 <ul className="space-y-3">
+//                   <li>
+//                     <a
+//                       href="/about"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       About Us
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="/blog"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Blog
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="/careers"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Careers
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <a
+//                       href="/contact"
+//                       className="hover:text-white transition-colors"
+//                     >
+//                       Contact
+//                     </a>
+//                   </li>
+//                 </ul>
+//               </div>
+//             </div>
+
+//             <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+//               <p className="mb-4 md:mb-0">
+//                 © {new Date().getFullYear()} NowScript. All rights reserved.
+//               </p>
+//               <div className="flex space-x-6">
+//                 <a
+//                   href="/privacy"
+//                   className="hover:text-white transition-colors"
+//                 >
+//                   Privacy
+//                 </a>
+//                 <a
+//                   href="/terms"
+//                   className="hover:text-white transition-colors"
+//                 >
+//                   Terms
+//                 </a>
+//                 <a
+//                   href="#"
+//                   className="hover:text-white transition-colors"
+//                 >
+//                   Cookies
+//                 </a>
+//               </div>
+//             </div>
+//           </div>
+//         </footer>
+//       </div>
+//     </>
+//   );
+// }
+
+
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Head from "next/head";
@@ -1623,15 +2413,15 @@ export default function LandingPage() {
     offset: ["start start", "end end"]
   });
 
-  // Vibrant teal-to-purple gradient color scheme
+  // Emerald/dark green color scheme
   const colors = {
-    primary: "from-teal-500 to-purple-600",
-    primaryText: "text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-purple-600",
-    primaryHover: "hover:from-teal-600 hover:to-purple-700",
-    primaryBorder: "border-teal-500",
+    primary: "from-emerald-500 to-green-600",
+    primaryText: "text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500",
+    primaryHover: "hover:from-emerald-600 hover:to-green-700",
+    primaryBorder: "border-emerald-500",
     secondary: "bg-gray-900",
-    accent: "bg-pink-500",
-    light: "bg-gray-50",
+    accent: "bg-emerald-500",
+    light: "bg-gray-800",
     dark: "bg-gray-900"
   };
 
@@ -1641,28 +2431,28 @@ export default function LandingPage() {
       title: "Universal Script Support",
       description: "Store every type of ServiceNow script with proper syntax highlighting",
       extended: "From Business Rules to UI Policies, we support all script types with intelligent recognition and formatting.",
-      color: "bg-teal-100 text-teal-600"
+      color: "bg-emerald-900 text-emerald-400"
     },
     {
       icon: <FiLock className="w-6 h-6" />,
       title: "Bank-Level Security",
       description: "Enterprise-grade encryption and access controls",
       extended: "256-bit encryption, regular backups, and granular permission controls ensure your scripts are always protected.",
-      color: "bg-purple-100 text-purple-600"
+      color: "bg-green-900 text-green-400"
     },
     {
       icon: <FiLayers className="w-6 h-6" />,
       title: "Project Workspaces",
       description: "Organize scripts by project, client, or instance",
       extended: "Create dedicated workspaces for each project with team collaboration features and custom tagging systems.",
-      color: "bg-blue-100 text-blue-600"
+      color: "bg-teal-900 text-teal-400"
     },
     {
       icon: <FiZap className="w-6 h-6" />,
       title: "Instant Search",
       description: "Find any script in milliseconds",
       extended: "Full-text search across all your scripts with filters for script type, date modified, and custom tags.",
-      color: "bg-pink-100 text-pink-600"
+      color: "bg-gray-800 text-gray-300"
     }
   ];
 
@@ -1698,25 +2488,25 @@ export default function LandingPage() {
       icon: <FiUser className="w-6 h-6" />,
       value: "850+",
       label: "Active Developers",
-      color: "bg-teal-100 text-teal-600"
+      color: "bg-emerald-900 text-emerald-400"
     },
     {
       icon: <FiCode className="w-6 h-6" />,
       value: "12K+",
       label: "Scripts Stored",
-      color: "bg-purple-100 text-purple-600"
+      color: "bg-green-900 text-green-400"
     },
     {
       icon: <FiShield className="w-6 h-6" />,
       value: "100%",
       label: "Uptime Reliability",
-      color: "bg-blue-100 text-blue-600"
+      color: "bg-teal-900 text-teal-400"
     },
     {
       icon: <FiClock className="w-6 h-6" />,
       value: "10x",
       label: "Faster Retrieval",
-      color: "bg-pink-100 text-pink-600"
+      color: "bg-gray-800 text-gray-300"
     }
   ];
 
@@ -1742,11 +2532,11 @@ export default function LandingPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
        <Header/>
-      <div className="min-h-screen bg-white overflow-x-hidden" ref={containerRef}>
+      <div className="min-h-screen bg-gray-900 overflow-x-hidden" ref={containerRef}>
         {/* Floating gradient background elements */}
         <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
           <motion.div 
-            className="absolute top-1/4 -right-20 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+            className="absolute top-1/4 -right-20 w-96 h-96 bg-emerald-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
             animate={{
               x: [0, -30, 0],
               y: [0, 40, 0],
@@ -1759,7 +2549,7 @@ export default function LandingPage() {
             }}
           />
           <motion.div 
-            className="absolute bottom-1/3 -left-20 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+            className="absolute bottom-1/3 -left-20 w-96 h-96 bg-green-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
             animate={{
               x: [0, 30, 0],
               y: [0, -40, 0],
@@ -1782,10 +2572,10 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center px-3 py-1 rounded-full bg-teal-100 text-teal-600 text-sm font-medium mb-4">
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-900 text-emerald-400 text-sm font-medium mb-4">
                 <span className="mr-2">✨</span> Now available for all teams
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-100">
                 <span className={colors.primaryText}>Organize</span> Your ServiceNow Scripts Like Never Before
               </h1>
               
@@ -1794,19 +2584,19 @@ export default function LandingPage() {
                 delay={150}
                 animateBy="words"
                 direction="top"
-                className="text-xl text-gray-600 mb-8 max-w-2xl"
+                className="text-xl text-gray-400 mb-8 max-w-2xl"
               />
               
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   href="/register"
-                  className={`px-8 py-4 bg-gradient-to-r ${colors.primary} text-white rounded-xl font-medium hover:opacity-90 transition-all shadow-lg hover:shadow-teal-500/30 flex items-center justify-center ${colors.primaryHover}`}
+                  className={`px-8 py-4 bg-gradient-to-r ${colors.primary} text-white rounded-xl font-medium hover:opacity-90 transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center justify-center ${colors.primaryHover}`}
                 >
                   Start Free Trial <FiArrowRight className="ml-2 animate-pulse" />
                 </Link>
                 <Link
                   href="#demo"
-                  className="px-8 py-4 border border-gray-300 text-gray-700 rounded-xl font-medium hover:border-teal-600 hover:text-teal-600 transition-colors flex items-center justify-center"
+                  className="px-8 py-4 border border-gray-700 text-gray-300 rounded-xl font-medium hover:border-emerald-500 hover:text-emerald-400 transition-colors flex items-center justify-center"
                 >
                   Watch Demo
                 </Link>
@@ -1819,7 +2609,7 @@ export default function LandingPage() {
                       key={i}
                       src={`/user${i}.jpg`}
                       alt="User"
-                      className="w-8 h-8 rounded-full border-2 border-white"
+                      className="w-8 h-8 rounded-full border-2 border-gray-800"
                     />
                   ))}
                 </div>
@@ -1833,88 +2623,88 @@ export default function LandingPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-2xl">
-                <div className="px-5 py-3 bg-gray-50 flex items-center border-b border-gray-200">
+              <div className="relative bg-gray-800 rounded-2xl border border-gray-700 overflow-hidden shadow-2xl">
+                <div className="px-5 py-3 bg-gray-800 flex items-center border-b border-gray-700">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
-                  <div className="text-sm text-gray-500 ml-4">
+                  <div className="text-sm text-gray-400 ml-4">
                     script-include.js
                   </div>
                 </div>
-                <div className="p-6 font-mono text-sm bg-gradient-to-br from-gray-50 to-white">
-                  <div className="text-teal-500">
+                <div className="p-6 font-mono text-sm bg-gray-900">
+                  <div className="text-emerald-400">
                     // Script Include: DataUtils
                   </div>
-                  <div className="text-purple-500">var</div>{" "}
-                  <span className="text-blue-500">DataUtils</span>{" "}
-                  <span className="text-gray-700">= Class.create();</span>
-                  <div className="text-purple-500">DataUtils</div>{" "}
-                  <span className="text-gray-700">.prototype = {"{"}</span>
-                  <div className="ml-4 text-gray-700">
-                    <span className="text-purple-500">initialize</span>{" "}
-                    <span className="text-gray-700">: </span>
-                    <span className="text-purple-500">function</span>
-                    <span className="text-gray-700">() {"{"}</span>
+                  <div className="text-purple-400">var</div>{" "}
+                  <span className="text-blue-400">DataUtils</span>{" "}
+                  <span className="text-gray-300">= Class.create();</span>
+                  <div className="text-purple-400">DataUtils</div>{" "}
+                  <span className="text-gray-300">.prototype = {"{"}</span>
+                  <div className="ml-4 text-gray-300">
+                    <span className="text-purple-400">initialize</span>{" "}
+                    <span className="text-gray-300">: </span>
+                    <span className="text-purple-400">function</span>
+                    <span className="text-gray-300">() {"{"}</span>
                   </div>
-                  <div className="ml-8 text-gray-700">
-                    <span className="text-green-600">
+                  <div className="ml-8 text-gray-300">
+                    <span className="text-emerald-400">
                       // Initialization code
                     </span>
                   </div>
-                  <div className="ml-4 text-gray-700">{"},"}</div>
+                  <div className="ml-4 text-gray-300">{"},"}</div>
                   <div className="ml-4">
-                    <span className="text-purple-500">getUserData</span>{" "}
-                    <span className="text-gray-700">: </span>
-                    <span className="text-purple-500">function</span>
-                    <span className="text-gray-700">(userId) {"{"}</span>
+                    <span className="text-purple-400">getUserData</span>{" "}
+                    <span className="text-gray-300">: </span>
+                    <span className="text-purple-400">function</span>
+                    <span className="text-gray-300">(userId) {"{"}</span>
                   </div>
                   <div className="ml-8">
-                    <span className="text-purple-500">var</span>{" "}
-                    <span className="text-blue-500">gr</span>{" "}
-                    <span className="text-gray-700">= new GlideRecord(</span>
-                    <span className="text-green-600">'sys_user'</span>
-                    <span className="text-gray-700">);</span>
+                    <span className="text-purple-400">var</span>{" "}
+                    <span className="text-blue-400">gr</span>{" "}
+                    <span className="text-gray-300">= new GlideRecord(</span>
+                    <span className="text-emerald-400">'sys_user'</span>
+                    <span className="text-gray-300">);</span>
                   </div>
                   <div className="ml-8">
-                    <span className="text-blue-500">gr</span>
-                    <span className="text-gray-700">.addQuery(</span>
-                    <span className="text-green-600">'sys_id'</span>
-                    <span className="text-gray-700">, userId);</span>
+                    <span className="text-blue-400">gr</span>
+                    <span className="text-gray-300">.addQuery(</span>
+                    <span className="text-emerald-400">'sys_id'</span>
+                    <span className="text-gray-300">, userId);</span>
                   </div>
                   <div className="ml-8">
-                    <span className="text-blue-500">gr</span>
-                    <span className="text-gray-700">.query();</span>
+                    <span className="text-blue-400">gr</span>
+                    <span className="text-gray-300">.query();</span>
                   </div>
                   <div className="ml-8">
-                    <span className="text-purple-500">if</span>{" "}
-                    <span className="text-gray-700">(</span>
-                    <span className="text-blue-500">gr</span>
-                    <span className="text-gray-700">.next()) {"{"}</span>
+                    <span className="text-purple-400">if</span>{" "}
+                    <span className="text-gray-300">(</span>
+                    <span className="text-blue-400">gr</span>
+                    <span className="text-gray-300">.next()) {"{"}</span>
                   </div>
                   <div className="ml-12">
-                    <span className="text-purple-500">return</span>{" "}
-                    <span className="text-blue-500">gr</span>
-                    <span className="text-gray-700">.getValue(</span>
-                    <span className="text-green-600">'name'</span>
-                    <span className="text-gray-700">);</span>
+                    <span className="text-purple-400">return</span>{" "}
+                    <span className="text-blue-400">gr</span>
+                    <span className="text-gray-300">.getValue(</span>
+                    <span className="text-emerald-400">'name'</span>
+                    <span className="text-gray-300">);</span>
                   </div>
-                  <div className="ml-8 text-gray-700">{"}"}</div>
+                  <div className="ml-8 text-gray-300">{"}"}</div>
                   <div className="ml-8">
-                    <span className="text-purple-500">return</span>{" "}
-                    <span className="text-green-600">''</span>
-                    <span className="text-gray-700">;</span>
+                    <span className="text-purple-400">return</span>{" "}
+                    <span className="text-emerald-400">''</span>
+                    <span className="text-gray-300">;</span>
                   </div>
-                  <div className="ml-4 text-gray-700">{"}"}</div>
-                  <div className="text-gray-700">{"};"}</div>
+                  <div className="ml-4 text-gray-300">{"}"}</div>
+                  <div className="text-gray-300">{"};"}</div>
                 </div>
               </div>
               
               {/* Floating elements around the code editor */}
               <motion.div 
-                className="absolute -bottom-6 -left-6 w-32 h-32 bg-teal-100 rounded-2xl -z-10"
+                className="absolute -bottom-6 -left-6 w-32 h-32 bg-emerald-900 rounded-2xl -z-10"
                 animate={{
                   rotate: [0, 5, 0],
                   scale: [1, 1.05, 1]
@@ -1926,7 +2716,7 @@ export default function LandingPage() {
                 }}
               />
               <motion.div 
-                className="absolute -top-6 -right-6 w-24 h-24 bg-purple-100 rounded-full -z-10"
+                className="absolute -top-6 -right-6 w-24 h-24 bg-green-900 rounded-full -z-10"
                 animate={{
                   rotate: [0, -5, 0],
                   scale: [1, 1.05, 1]
@@ -1943,9 +2733,9 @@ export default function LandingPage() {
         </section>
 
         {/* Logo cloud */}
-        <section className="py-12 bg-gradient-to-r from-teal-50 to-purple-50">
+        <section className="py-12 bg-gray-800">
           <div className="max-w-7xl mx-auto px-6">
-            <p className="text-center text-gray-500 mb-8">Trusted by teams at</p>
+            <p className="text-center text-gray-400 mb-8">Trusted by teams at</p>
             <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
               {['acme', 'globex', 'stark', 'wayne', 'oscorp'].map((company) => (
                 <motion.div
@@ -1965,7 +2755,7 @@ export default function LandingPage() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-20">
+        <section id="features" className="py-20 bg-gray-900">
           <div className="max-w-7xl mx-auto px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -1974,10 +2764,10 @@ export default function LandingPage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
                 Power Up Your <span className={colors.primaryText}>ServiceNow</span> Development
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Everything you need to manage scripts efficiently and collaborate seamlessly
               </p>
             </motion.div>
@@ -1994,8 +2784,8 @@ export default function LandingPage() {
                     onMouseEnter={() => setActiveFeature(index)}
                     className={`p-6 rounded-xl cursor-pointer transition-all ${
                       activeFeature === index
-                        ? "bg-white shadow-lg border border-gray-200"
-                        : "bg-gray-50 hover:bg-gray-100"
+                        ? "bg-gray-800 shadow-lg border border-gray-700"
+                        : "bg-gray-800 hover:bg-gray-700"
                     }`}
                   >
                     <div className="flex items-start space-x-4">
@@ -2003,10 +2793,10 @@ export default function LandingPage() {
                         {feature.icon}
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                        <h3 className="text-xl font-semibold text-gray-100 mb-2">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-600">{feature.description}</p>
+                        <p className="text-gray-400">{feature.description}</p>
                       </div>
                     </div>
                   </motion.div>
@@ -2018,7 +2808,7 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5 }}
-                className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 h-full"
+                className="bg-gray-800 p-8 rounded-2xl shadow-xl border border-gray-700 h-full"
               >
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -2033,15 +2823,15 @@ export default function LandingPage() {
                       <div className={`p-3 rounded-lg ${features[activeFeature].color} mr-4`}>
                         {features[activeFeature].icon}
                       </div>
-                      <h3 className="text-2xl font-semibold text-gray-900">
+                      <h3 className="text-2xl font-semibold text-gray-100">
                         {features[activeFeature].title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 mb-6 text-lg">
+                    <p className="text-gray-400 mb-6 text-lg">
                       {features[activeFeature].extended}
                     </p>
-                    <div className="mt-auto bg-gray-50 p-4 rounded-lg border border-gray-200">
-                      <div className="flex items-center space-x-2 text-teal-600">
+                    <div className="mt-auto bg-gray-700 p-4 rounded-lg border border-gray-600">
+                      <div className="flex items-center space-x-2 text-emerald-400">
                         <FiCheck className="w-5 h-5" />
                         <span className="font-medium">
                           Included in all plans
@@ -2056,7 +2846,7 @@ export default function LandingPage() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gradient-to-r from-teal-50 to-purple-50">
+        <section className="py-20 bg-gray-800">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {stats.map((stat, index) => (
@@ -2066,15 +2856,15 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-gray-800 p-8 rounded-xl border border-gray-700 hover:border-emerald-500 transition-colors"
                 >
                   <div className={`w-14 h-14 mx-auto mb-4 rounded-full ${stat.color} flex items-center justify-center`}>
                     {stat.icon}
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2 text-center">
+                  <div className="text-3xl font-bold text-gray-100 mb-2 text-center">
                     {stat.value}
                   </div>
-                  <div className="text-gray-600 text-center">{stat.label}</div>
+                  <div className="text-gray-400 text-center">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -2082,7 +2872,7 @@ export default function LandingPage() {
         </section>
 
         {/* Testimonials */}
-        <section id="testimonials" className="py-20 bg-white">
+        <section id="testimonials" className="py-20 bg-gray-900">
           <div className="max-w-7xl mx-auto px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -2091,10 +2881,10 @@ export default function LandingPage() {
               transition={{ duration: 0.5 }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
                 Trusted by <span className={colors.primaryText}>ServiceNow</span> Teams
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Don't just take our word for it - hear from our users
               </p>
             </motion.div>
@@ -2103,7 +2893,7 @@ export default function LandingPage() {
               {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}
-                  className={`absolute inset-0 bg-white p-8 rounded-2xl shadow-md flex flex-col ${activeTestimonial === index ? 'z-10' : 'z-0'}`}
+                  className={`absolute inset-0 bg-gray-800 p-8 rounded-2xl border border-gray-700 flex flex-col ${activeTestimonial === index ? 'z-10' : 'z-0'}`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? 100 : -100 }}
                   animate={{ 
                     opacity: activeTestimonial === index ? 1 : 0.3,
@@ -2119,7 +2909,7 @@ export default function LandingPage() {
                       className="w-12 h-12 rounded-full mr-4 object-cover"
                     />
                     <div>
-                      <h4 className="font-semibold text-gray-900">
+                      <h4 className="font-semibold text-gray-100">
                         {testimonial.name}
                       </h4>
                       <p className="text-sm text-gray-500">
@@ -2127,7 +2917,7 @@ export default function LandingPage() {
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-6 text-lg italic flex-1">
+                  <p className="text-gray-400 mb-6 text-lg italic flex-1">
                     "{testimonial.quote}"
                   </p>
                   <div className="flex items-center">
@@ -2136,8 +2926,8 @@ export default function LandingPage() {
                         key={star}
                         className={`w-5 h-5 ${
                           star < testimonial.rating
-                            ? "text-yellow-500 fill-yellow-500"
-                            : "text-gray-300"
+                            ? "text-yellow-400 fill-yellow-400"
+                            : "text-gray-600"
                         }`}
                       />
                     ))}
@@ -2150,7 +2940,7 @@ export default function LandingPage() {
                   <button
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${activeTestimonial === index ? 'bg-teal-600 w-6' : 'bg-gray-300'}`}
+                    className={`w-3 h-3 rounded-full transition-all ${activeTestimonial === index ? 'bg-emerald-500 w-6' : 'bg-gray-600'}`}
                   />
                 ))}
               </div>
@@ -2159,7 +2949,7 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-teal-600 to-purple-600 text-white">
+        <section className="py-20 bg-gradient-to-br from-emerald-600 to-green-700 text-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -2176,13 +2966,13 @@ export default function LandingPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/register"
-                  className="px-8 py-4 bg-white text-teal-600 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
+                  className="px-8 py-4 bg-white text-emerald-600 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
                 >
                   Start Free Trial
                 </Link>
                 <Link
                   href="#demo"
-                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-medium hover:bg-white hover:text-teal-600 transition-all"
+                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-medium hover:bg-white hover:text-emerald-600 transition-all"
                 >
                   Schedule Demo
                 </Link>
@@ -2197,7 +2987,7 @@ export default function LandingPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               <div>
                 <div className="flex items-center space-x-3 mb-6">
-                  <FaServicestack className="text-2xl text-teal-400" />
+                  <FaServicestack className="text-2xl text-emerald-400" />
                   <span className="text-xl font-bold text-white">
                     NowScript
                   </span>

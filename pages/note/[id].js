@@ -66,11 +66,11 @@ export default function NoteDetailPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">Edit Script</h1>
+        <h1 className="text-2xl font-bold"></h1>
         <div className="flex space-x-2">
           <Link 
             href="/dashboard"
-            className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
+            className="px-4 py-2 border text-white border-green-300 rounded-md hover:bg-black hover:text-green-300 transition-colors"
           >
             Cancel
           </Link>
