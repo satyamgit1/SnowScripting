@@ -1,5 +1,3 @@
-
-
 import { useRouter } from 'next/router';
 import { useAuth } from '../../services/auth';
 import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
