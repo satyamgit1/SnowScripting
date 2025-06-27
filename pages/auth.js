@@ -114,7 +114,9 @@ export default function AuthPage() {
           className="flex items-center space-x-3"
         >
           <FaServicestack className="text-3xl text-emerald-500" />
-          <span className="text-2xl font-bold text-emerald-500">NowScript</span>
+        <Link href="/">
+  <span className="text-2xl font-bold text-emerald-500">NowScript</span>
+</Link>
         </motion.div>
         <div className="hidden md:flex items-center space-x-8">
           <Link href="/" className="flex items-center text-gray-300 hover:text-emerald-400 transition-colors">
