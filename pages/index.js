@@ -322,27 +322,101 @@ export default function LandingPage() {
         </section>
 
         {/* Logo cloud */}
-        <section className="py-12 bg-gray-800">
+        {/* <section className="py-12 bg-gray-800">
           <div className="max-w-7xl mx-auto px-6">
             <p className="text-center text-gray-400 mb-8">
               Trusted by teams at
             </p>
             <div className="flex flex-wrap justify-center gap-x-12 gap-y-8">
-              {["acme", "globex", "stark", "wayne", "oscorp"].map((company) => (
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className=" transition-opacity"
-                >
-                  <img
-                    src="/exterprise.png"
-                    alt="exterprise logo"
-                    className="h-8"
-                  />
-                </motion.div>
-              ))}
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className="transition-opacity"
+              >
+                <img
+                  src="/exterprise.png"
+                  alt="exterprise logo"
+                  className="h-8"
+                />
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                className="transition-opacity"
+              >
+                <img
+                  src="/Growinity.png"
+                  alt="Growinity.png"
+                  className="h-8"
+                />
+              </motion.div>
+               <motion.div
+                whileHover={{ scale: 1.1 }}
+                className="transition-opacity"
+              >
+                <img
+                  src="/CodingChaska.png"
+                  alt="CodingChaska.png"
+                  className="h-8"
+                />
+              </motion.div>
             </div>
           </div>
-        </section>
+        </section> */}
+        <section className="py-16 bg-gradient-to-b from-gray-900 to-gray-800">
+  <div className="max-w-7xl mx-auto px-6">
+    <p className="text-center text-gray-300 mb-12 text-lg font-light tracking-wider">
+      TRUSTED BY INNOVATIVE TEAMS WORLDWIDE
+    </p>
+    <div className="flex flex-wrap justify-center items-center gap-16">
+      {/* Exterprise Logo */}
+      <motion.div
+        whileHover={{ 
+          scale: 1.15,
+          transition: { duration: 0.3 }
+        }}
+        whileTap={{ scale: 0.95 }}
+        className="transition-all duration-300 hover:drop-shadow-lg"
+      >
+        <img
+          src="/exterprise.png"
+          alt="Exterprise logo"
+          className="h-12 opacity-90 hover:opacity-100 transition-opacity"
+        />
+      </motion.div>
+
+      {/* Growinity Logo */}
+      <motion.div
+        whileHover={{ 
+          scale: 1.15,
+          transition: { duration: 0.3 }
+        }}
+        whileTap={{ scale: 0.95 }}
+        className="transition-all duration-300 hover:drop-shadow-lg"
+      >
+        <img
+          src="/Growinity.png"
+          alt="Growinity logo"
+          className="h-12 opacity-90 hover:opacity-100 transition-opacity"
+        />
+      </motion.div>
+
+      {/* CodingChaska Logo */}
+      <motion.div
+        whileHover={{ 
+          scale: 1.15,
+          transition: { duration: 0.3 }
+        }}
+        whileTap={{ scale: 0.95 }}
+        className="transition-all duration-300 hover:drop-shadow-lg"
+      >
+        <img
+          src="/CodingChaska.png"
+          alt="CodingChaska logo"
+          className="h-12 opacity-90 hover:opacity-100 transition-opacity"
+        />
+      </motion.div>
+    </div>
+  </div>
+</section>
 
         {/* Features Section */}
         <section id="features" className="py-20 bg-gray-900">
