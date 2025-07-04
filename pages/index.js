@@ -121,13 +121,13 @@ export default function LandingPage() {
   const stats = [
     {
       icon: <FiUser className="w-6 h-6" />,
-      value: "850+",
+      value: "18+",
       label: "Active Developers",
       color: "bg-emerald-900 text-emerald-400",
     },
     {
       icon: <FiCode className="w-6 h-6" />,
-      value: "12K+",
+      value: "500+",
       label: "Scripts Stored",
       color: "bg-green-900 text-green-400",
     },
@@ -506,9 +506,9 @@ export default function LandingPage() {
                     <div className="mt-auto bg-gray-700 p-4 rounded-lg border border-gray-600">
                       <div className="flex items-center space-x-2 text-emerald-400">
                         <FiCheck className="w-5 h-5" />
-                        <span className="font-medium">
+                        {/* <span className="font-medium">
                           Included in all plans
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </motion.div>
