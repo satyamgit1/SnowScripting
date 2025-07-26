@@ -636,39 +636,64 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-emerald-600 to-green-700 text-white">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">
-                Ready to Transform Your{" "}
-                <span className="text-white">ServiceNow</span> Workflow?
-              </h2>
-              <p className="text-xl mb-10 max-w-3xl mx-auto opacity-90">
-                Join hundreds of developers who are saving hours every week with
-                organized, accessible scripts
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link
-                  href="/register"
-                  className="px-8 py-4 bg-white text-emerald-600 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
-                >
-                  Start Free Trial
-                </Link>
-                <Link
-                  href="#demo"
-                  className="px-8 py-4 border-2 border-white text-white rounded-xl font-medium hover:bg-white hover:text-emerald-600 transition-all"
-                >
-                  Schedule Demo
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+       <section className="py-24 bg-gradient-to-br from-emerald-600 via-green-600 to-emerald-700 text-white">
+  <div className="max-w-4xl mx-auto px-6 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <div className="mb-12">
+        <motion.h2 
+          className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          Transform Your <span className="bg-white/10 px-3 py-1 rounded-lg backdrop-blur-sm">ServiceNow</span> Workflow
+        </motion.h2>
+        <motion.p
+          className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 font-light"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          Join hundreds of developers saving hours weekly with our organized script solutions
+        </motion.p>
+      </div>
+
+      <motion.div
+        className="flex justify-center gap-6"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+      >
+        <Link
+          href="#contact"
+          className="relative px-10 py-4 bg-white text-emerald-600 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group overflow-hidden"
+        >
+          <span className="relative z-10">Contact Us</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </Link>
+      </motion.div>
+
+      <motion.div 
+        className="mt-16 flex justify-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+      >
+        <div className="flex items-center gap-2 text-sm opacity-80">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+          Trusted by leading enterprises worldwide
+        </div>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
 
         {/* Footer */}
         <footer className="py-16 bg-gray-900 text-gray-400">
