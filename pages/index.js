@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Head from "next/head";
+import ServiceNowAIAssistant from '../components/ServiceNowAIAssistant';
+
 import {
   motion,
   AnimatePresence,
@@ -417,6 +419,10 @@ export default function LandingPage() {
     </div>
   </div>
 </section>
+
+<div className="container mx-auto p-4">
+      <ServiceNowAIAssistant />
+    </div>
 
         {/* Features Section */}
         <section id="features" className="py-20 bg-gray-900">
