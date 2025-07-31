@@ -1110,7 +1110,7 @@ export default function LandingPage() {
               transition={{ duration: 0.6 }}
             >
               <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-900 text-emerald-400 text-sm font-medium mb-4">
-                <span className="mr-2">✨</span> Now available for all teams
+                <span className="mr-2">✨</span> AI Powdered Notes
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-100">
                 <span className={colors.primaryText}>Organize</span> Your
