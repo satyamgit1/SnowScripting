@@ -1533,7 +1533,7 @@ export default function LandingPage() {
                 transition={{ delay: 0.6 }}
               >
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="relative px-10 py-4 bg-white text-emerald-600 rounded-xl font-semibold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group overflow-hidden"
                 >
                   <span className="relative z-10">Contact Us</span>
