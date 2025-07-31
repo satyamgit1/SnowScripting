@@ -1,6 +1,4 @@
 
-
-
 import rateLimiter from '../../lib/rateLimiter';
 
 export default async function handler(req, res) {
@@ -23,7 +21,7 @@ export default async function handler(req, res) {
       success: false,
       error: 'Rate Limit Exceeded',
       message: 'Too many requests. Please try again later.',
-      retryAfter: Math.ceil(resetTime / 1000) // Time in seconds until reset
+      retryAfter: Math.ceil(resetTime / 90000) // Time in seconds until reset
     });
   }
 

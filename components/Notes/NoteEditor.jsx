@@ -1014,6 +1014,9 @@ import { useAuth } from "../../services/auth";
 import Editor from "@monaco-editor/react";
 import { motion, AnimatePresence } from "framer-motion";
 
+
+import Footer from "components/Footer";
+
 const ServiceNowAIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -2313,6 +2316,7 @@ Sent from ServiceNow Script Manager`;
           )}
         </AnimatePresence>
       </div>
+      <Footer/>
     </div>
   );
 };

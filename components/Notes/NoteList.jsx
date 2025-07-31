@@ -9,6 +9,7 @@ import { useAuth } from "../../services/auth";
 import { deleteNote } from "../../services/notes";
 import Modal from "../../components/Modal";
 import { motion, AnimatePresence } from "framer-motion";
+import Footer from "components/Footer";
 
 // Custom animated components
 const FloatingOrb = () => (
@@ -215,7 +216,7 @@ export default function NoteList({ userId }) {
     );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 p-6">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 p-2">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -784,6 +785,7 @@ export default function NoteList({ userId }) {
           confirmColor="red"
         />
       )}
+      <Footer/>
     </div>
   );
 }
