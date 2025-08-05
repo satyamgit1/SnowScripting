@@ -231,7 +231,7 @@ export default function LandingPage() {
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gray-100">
                 <span className={colors.primaryText}>Organize</span> Your
-                ServiceNow Scripts Like Never Before
+                ServiceNow Scripts With  <span className={colors.primaryText}>SnowScripting</span>
               </h1>
 
               <BlurText
