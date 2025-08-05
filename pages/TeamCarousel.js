@@ -484,7 +484,7 @@ const teamMembers = [
   {
     name: 'Satyam Singh',
     role: 'Full Stack Developer',
-    image: 'my_pic.jpg',
+    image: 'https://portfolio-flame-two-34.vercel.app/_next/static/media/heroProfile.908b2ee6.png',
     bio: 'Implementing CI/CD pipelines and infrastructure as code for seamless deployments',
     color: 'from-amber-500 to-orange-600',
     accentColor: 'bg-orange-500',
