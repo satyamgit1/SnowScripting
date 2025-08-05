@@ -175,7 +175,7 @@ export default function LandingPage() {
   return (
     <>
       <Head>
-        <title>NowScript | Organize & Manage ServiceNow Scripts</title>
+        <title>SnowScripting | Organize & Manage ServiceNow Scripts</title>
         <meta
           name="description"
           content="The complete solution for organizing and managing your ServiceNow scripts"
@@ -824,7 +824,7 @@ export default function LandingPage() {
 
             <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
               <p className="mb-4 md:mb-0">
-                © {new Date().getFullYear()} NowScript. All rights reserved.
+                © {new Date().getFullYear()} SnowScripting. All rights reserved.
               </p>
               <div className="flex space-x-6">
                 <a

@@ -18,7 +18,8 @@ const PUBLIC_ROUTES = [
   '/Terms',
   '/blog',
   '/About_us',
-  '/About'
+  '/About',
+  '/TeamCarousel'
 ];
 
 export default function App({ Component, pageProps }) {
