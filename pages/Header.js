@@ -52,7 +52,7 @@ export default function Header() {
         <Link href="/" className="flex items-center space-x-2">
           <FaServicestack className="text-2xl text-emerald-400" />
           <span className={`text-xl font-bold ${colors.primaryText}`}>
-            NowScript
+            SnowScripting
           </span>
         </Link>
 
