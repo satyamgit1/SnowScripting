@@ -1,7 +1,3 @@
-
-
-
-
 import { FaServicestack, FaGithub, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -160,7 +156,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="/careers" className={colors.linkHover}>
+                  <a href="/CareerPage" className={colors.linkHover}>
                     Careers
                   </a>
                 </li>
