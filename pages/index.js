@@ -177,7 +177,7 @@ export default function LandingPage() {
           name="description"
           content="The complete solution for organizing and managing your ServiceNow scripts"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://www.snowscripting.com/_next/image?url=%2Fsnowslogo.png&w=128&q=75" />
       </Head>
       <Header />
       <div
