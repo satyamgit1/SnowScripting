@@ -80,7 +80,8 @@ const PUBLIC_ROUTES = [
   '/blog',
   '/About_us',
   '/About',
-  '/TeamCarousel'
+  '/TeamCarousel',
+  '/CareerPage'
 ];
 
 export default function App({ Component, pageProps }) {
