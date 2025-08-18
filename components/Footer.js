@@ -256,7 +256,7 @@ export default function Footer() {
                   <FaGithub className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/satyam-singh-612415223/"
                   className={`${colors.linkHover}`}
                 >
                   <FaLinkedin className="w-5 h-5" />
