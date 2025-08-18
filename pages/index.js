@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import ServiceNowAIAssistant from "../components/ServiceNowAIAssistant";
+import SEO from '.../components/common/SEO';
+
 
 import {
   motion,
@@ -171,6 +173,10 @@ export default function LandingPage() {
 
   return (
     <>
+    <SEO 
+        title="SnowScripting | AI-Powered ServiceNow Script Management"
+        description="The complete solution for organizing and managing your ServiceNow scripts"
+      />
       <Head>
         <title>SnowScripting | Organize & Manage ServiceNow Scripts</title>
         <meta
