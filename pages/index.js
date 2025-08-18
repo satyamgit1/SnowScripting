@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Head from "next/head";
 import ServiceNowAIAssistant from "../components/ServiceNowAIAssistant";
-import SEO from '.../components/common/SEO';
+import SEO from '../components/Common/SEO';
 
 
 import {

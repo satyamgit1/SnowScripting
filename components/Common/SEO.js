@@ -3,9 +3,9 @@ import Head from 'next/head';
 export default function SEO({ 
   title = "SnowScripting | AI-Powered ServiceNow Script Management", 
   description = "Organize, manage, and optimize your ServiceNow scripts with SnowScripting's AI-powered platform.",
-  image = "/assets/images/social-preview.jpg",
+  image = "https://www.snowscripting.com/_next/image?url=%2Fsnowslogo.png&w=128&q=75",
   url = "https://www.snowscripting.com",
-  keywords = "ServiceNow, script management, developer tools, AI assistant"
+  keywords = "ServiceNow, script management, developer tools, AI assistant,snow scripting, servicenow scripting, servicenow script, servicenow note,snowscripting"
 }) {
   return (
     <Head>
