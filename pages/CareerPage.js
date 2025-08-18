@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Header from './Header';
+import Footer from 'components/Footer';
 
 export default function Careers() {
   const [formData, setFormData] = useState({
@@ -294,6 +295,7 @@ export default function Careers() {
         </div>
       </div>
     </div>
+    <Footer/>
       </div>
   );
 }
