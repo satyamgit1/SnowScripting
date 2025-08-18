@@ -6,6 +6,10 @@ const nextConfig = {
     domains: ['https://www.snowscripting.com','res.cloudinary.com'],
     formats: ['image/avif', 'image/webp'],
   },
+  api: {
+    bodyParser: false,
+    externalResolver: true,
+  },
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',

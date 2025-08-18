@@ -2,11 +2,12 @@ import nodemailer from 'nodemailer';
 import rateLimit from 'express-rate-limit';
 import formidable from 'formidable';
 import fs from 'fs';
+import path from 'path';
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // limit each IP to 5 requests per windowMs
-  message: 'Too many submission attempts from this IP, please try again later'
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  message: 'Too many submissions from this IP, please try again later'
 });
 
 async function runMiddleware(req, res, fn) {
@@ -20,13 +21,12 @@ async function runMiddleware(req, res, fn) {
 
 export const config = {
   api: {
-    bodyParser: false, // Disables the default body parser to handle FormData
+    bodyParser: false,
   },
 };
 
 export default async function handler(req, res) {
   try {
-    // Apply rate limiting
     await runMiddleware(req, res, limiter);
     
     if (req.method !== 'POST') {
@@ -36,11 +36,10 @@ export default async function handler(req, res) {
       });
     }
 
-    // Parse form data
     const form = new formidable.IncomingForm();
     form.keepExtensions = true;
-    form.maxFileSize = 5 * 1024 * 1024; // 5MB limit
-    form.multiples = false; // Only allow single file upload
+    form.maxFileSize = 5 * 1024 * 1024;
+    form.multiples = false;
 
     const formData = await new Promise((resolve, reject) => {
       form.parse(req, (err, fields, files) => {
@@ -55,15 +54,19 @@ export default async function handler(req, res) {
       });
     });
 
-    console.log('Form data received:', {
+    console.log('Received form data:', {
       fields: formData.fields,
-      files: formData.files ? Object.keys(formData.files) : null
+      file: formData.files?.resume ? {
+        name: formData.files.resume.originalFilename,
+        type: formData.files.resume.mimetype,
+        size: formData.files.resume.size
+      } : null
     });
 
     const { name, email, phone, position, experience, message } = formData.fields;
     const resume = formData.files?.resume;
 
-    // Validate required fields
+    // Validation
     if (!name || !email || !position || !experience || !resume) {
       return res.status(400).json({ 
         success: false,
@@ -71,91 +74,100 @@ export default async function handler(req, res) {
       });
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ 
         success: false,
         message: 'Please enter a valid email address' 
       });
     }
 
-    // Validate file type
     const allowedTypes = [
       'application/pdf',
       'application/msword',
       'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
     ];
     
-    if (!allowedTypes.includes(resume.type)) {
+    if (!allowedTypes.includes(resume.mimetype)) {
       return res.status(400).json({ 
         success: false,
         message: 'Only PDF and Word documents are allowed' 
       });
     }
 
-    // Configure email transporter
+    // Configure transporter with more robust settings
     const transporter = nodemailer.createTransport({
       service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
-    // Verify transporter connection
+    // Verify connection
     try {
       await transporter.verify();
-      console.log('Server is ready to take our messages');
-    } catch (verifyError) {
-      console.error('SMTP connection error:', verifyError);
+      console.log('SMTP connection verified');
+    } catch (error) {
+      console.error('SMTP connection failed:', error);
       throw new Error('Failed to connect to email server');
     }
 
-    // Read the resume file
+    // Read file
     let resumeData;
     try {
-      resumeData = fs.readFileSync(resume.path);
-    } catch (readError) {
-      console.error('Error reading resume file:', readError);
+      resumeData = fs.readFileSync(resume.filepath);
+    } catch (error) {
+      console.error('File read error:', error);
       throw new Error('Failed to process resume file');
     }
 
-    // Email template (same as before)
-    const emailHtml = `...`; // Your HTML template here
+    // Email content
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2 style="color: #2563eb;">New Job Application</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
+        <p><strong>Position:</strong> ${position}</p>
+        <p><strong>Experience:</strong> ${experience}</p>
+        ${message ? `<div style="margin-top: 15px;">
+          <h3 style="color: #2563eb;">Cover Letter:</h3>
+          <p>${message}</p>
+        </div>` : ''}
+      </div>
+    `;
 
-    // Email options
-    const mailOptions = {
-      from: `"Career Portal" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
-      replyTo: email,
-      subject: `📄 New Application: ${name} for ${position}`,
-      html: emailHtml,
-      attachments: [
-        {
-          filename: resume.name || 'resume.pdf',
-          content: resumeData,
-          contentType: resume.type
-        }
-      ],
-      headers: {
-        'X-Priority': '1',
-        'X-MSMail-Priority': 'High',
-        'Importance': 'High'
-      }
-    };
-
-    // Send the email
-    const emailResponse = await transporter.sendMail(mailOptions);
-    console.log('Email sent:', emailResponse.messageId);
-
-    // Delete the temporary file
+    // Send email
     try {
-      fs.unlinkSync(resume.path);
-      console.log('Temporary file deleted');
-    } catch (unlinkError) {
-      console.error('Error deleting temporary file:', unlinkError);
-      // Not critical enough to fail the request
+      const info = await transporter.sendMail({
+        from: `"Career Portal" <${process.env.GMAIL_USER}>`,
+        to: process.env.GMAIL_USER,
+        subject: `New Application: ${name} for ${position}`,
+        html: emailHtml,
+        attachments: [{
+          filename: resume.originalFilename || 'resume.pdf',
+          content: resumeData,
+          contentType: resume.mimetype
+        }]
+      });
+
+      console.log('Email sent:', info.messageId);
+    } catch (error) {
+      console.error('Email send error:', error);
+      throw new Error('Failed to send email');
+    } finally {
+      // Clean up file
+      try {
+        fs.unlinkSync(resume.filepath);
+      } catch (error) {
+        console.error('File cleanup error:', error);
+      }
     }
 
     return res.status(200).json({ 
@@ -164,18 +176,11 @@ export default async function handler(req, res) {
     });
     
   } catch (error) {
-    console.error('Error processing application:', {
-      message: error.message,
-      stack: error.stack,
-      timestamp: new Date().toISOString()
-    });
-
-    // Specific error messages for client
-    let clientMessage = 'Error processing application';
+    console.error('API Error:', error.message);
+    
+    let clientMessage = 'An error occurred while processing your application';
     if (error.message.includes('File size exceeds')) {
       clientMessage = 'File size exceeds 5MB limit';
-    } else if (error.message.includes('Failed to parse')) {
-      clientMessage = 'Invalid form data submitted';
     } else if (error.message.includes('email server')) {
       clientMessage = 'Temporarily unable to process applications';
     }
@@ -183,7 +188,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ 
       success: false,
       message: clientMessage,
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 }
