@@ -38,7 +38,7 @@ export default function About() {
           className="flex items-center space-x-3"
         >
           <FaServicestack className="text-3xl text-emerald-500" />
-          <span className="text-2xl font-bold text-emerald-500">NowScript</span>
+          <span className="text-2xl font-bold text-emerald-500">SnowScripting</span>
         </motion.div>
         <div className="hidden md:flex items-center space-x-8">
           <Link href="/features" className="text-gray-300 hover:text-emerald-400 transition-colors">Features</Link>

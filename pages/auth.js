@@ -1,6 +1,4 @@
 
-// }
-
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { auth } from '../lib/firebase';
@@ -113,9 +111,9 @@ export default function AuthPage() {
           transition={{ duration: 0.5 }}
           className="flex items-center space-x-3"
         >
-          <FaServicestack className="text-3xl text-emerald-500" />
+        
         <Link href="/">
-  <span className="text-2xl font-bold text-emerald-500">NowScript</span>
+  <span className="text-2xl font-bold text-emerald-400">SnowScripting</span>
 </Link>
         </motion.div>
         <div className="hidden md:flex items-center space-x-8">
