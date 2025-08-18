@@ -181,7 +181,7 @@ import {
   FiUserPlus,
   FiUsers
 } from "react-icons/fi";
-import { trackEvent } from "../lib/gtag"; // Import the tracking function
+import { trackEvent } from "../lib/gtag";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -206,7 +206,6 @@ export default function Header() {
         behavior: 'smooth',
         block: 'start'
       });
-      // Track section navigation
       trackEvent({
         action: 'header_navigation',
         category: 'engagement',
@@ -231,6 +230,14 @@ export default function Header() {
       label: mobileMenuOpen ? 'menu_close' : 'menu_open'
     });
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const trackNavItemClick = (itemName) => {
+    trackEvent({
+      action: 'nav_item_click',
+      category: 'navigation',
+      label: itemName.toLowerCase().replace(' ', '_')
+    });
   };
 
   return (
@@ -274,8 +281,37 @@ export default function Header() {
             <FiGrid className="w-4 h-4" />
             <span>Features</span>
           </button>
-          
-          {/* Other navigation items... */}
+          <button 
+            onClick={() => scrollToSection('testimonials')} 
+            className="flex items-center space-x-1.5 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+          >
+            <FiStar className="w-4 h-4" />
+            <span>Testimonials</span>
+          </button>
+          <Link 
+            href="/TeamCarousel" 
+            className="flex items-center space-x-1.5 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+            onClick={() => trackNavItemClick('Our Team')}
+          >
+            <FiUsers className="w-4 h-4" />
+            <span>Our Team</span>
+          </Link>
+          <Link 
+            href="/blog" 
+            className="flex items-center space-x-1.5 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+            onClick={() => trackNavItemClick('Blog')}
+          >
+            <FiBook className="w-4 h-4" />
+            <span>Blog</span>
+          </Link>
+          <Link 
+            href="/contact" 
+            className="flex items-center space-x-1.5 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+            onClick={() => trackNavItemClick('Contact')}
+          >
+            <FiMail className="w-4 h-4" />
+            <span>Contact</span>
+          </Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -317,7 +353,53 @@ export default function Header() {
             className="md:hidden overflow-hidden bg-gray-800"
           >
             <div className="px-6 py-4 space-y-4">
-              {/* Mobile menu items with tracking... */}
+              <button 
+                onClick={() => scrollToSection('features')} 
+                className="flex items-center space-x-3 w-full text-left py-2 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+              >
+                <FiGrid className="w-5 h-5" />
+                <span>Features</span>
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')} 
+                className="flex items-center space-x-3 w-full text-left py-2 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+              >
+                <FiStar className="w-5 h-5" />
+                <span>Testimonials</span>
+              </button>
+              <Link 
+                href="/TeamCarousel" 
+                className="flex items-center space-x-3 py-2 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+                onClick={() => {
+                  trackNavItemClick('Our Team');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <FiUsers className="w-5 h-5" />
+                <span>Our Team</span>
+              </Link>
+              <Link 
+                href="/blog" 
+                className="flex items-center space-x-3 py-2 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+                onClick={() => {
+                  trackNavItemClick('Blog');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <FiBook className="w-5 h-5" />
+                <span>Blog</span>
+              </Link>
+              <Link 
+                href="/contact" 
+                className="flex items-center space-x-3 py-2 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
+                onClick={() => {
+                  trackNavItemClick('Contact');
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <FiMail className="w-5 h-5" />
+                <span>Contact</span>
+              </Link>
               <div className="pt-4 border-t border-gray-700 space-y-3">
                 <Link 
                   href="/auth" 
