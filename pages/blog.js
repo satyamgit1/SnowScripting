@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX, FiArrowRight, FiBookOpen, FiHome, FiMail, FiUser, FiExternalLink } from "react-icons/fi";
 import { FaTwitter, FaLinkedin, FaGithub, FaRegLightbulb, FaCode, FaChartLine, FaCloud } from "react-icons/fa";
 import { useState } from "react";
+import Footer from 'components/Footer';
 
 export default function Blog() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -506,76 +507,7 @@ export default function Blog() {
         </motion.div>
       </div>
 
-      {/* Footer - Dark theme */}
-      <footer className="bg-gray-900 text-gray-400 py-16 mt-20 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <FaCloud className="text-2xl text-emerald-400" />
-                <span className="text-xl font-bold text-white">
-                 SnowScripting 
-                </span>
-              </div>
-              <p className="mb-6 text-gray-400">
-                The complete solution for ServiceNow script management and developer productivity.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  <FaTwitter className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  <FaGithub className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-emerald-400 transition-colors">
-                  <FaLinkedin className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Product</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Integrations</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Roadmap</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">API Reference</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Community</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Blog</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
-              <ul className="space-y-3">
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-emerald-400 transition-colors">Legal</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-            <p className="mb-4 md:mb-0 text-gray-500">
-              © {new Date().getFullYear()} SnowScripting. All rights reserved.
-            </p>
-            <div className="flex space-x-6">
-              <a href="#" className="hover:text-emerald-400 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-emerald-400 transition-colors">Terms</a>
-              <a href="#" className="hover:text-emerald-400 transition-colors">Cookies</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+     <Footer/>
     </>
   );
 }
