@@ -32,6 +32,7 @@ import {
 } from "react-icons/fa";
 import BlurText from "./BlurText";
 import Header from "pages/Header";
+import Footer from "components/Footer";
 
 export default function LandingPage() {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -690,7 +691,7 @@ export default function LandingPage() {
         </section>
 
         {/* Footer */}
-        <footer className="py-16 bg-gray-900 text-gray-400">
+        {/* <footer className="py-16 bg-gray-900 text-gray-400">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               <div>
@@ -845,7 +846,8 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-        </footer>
+        </footer> */}
+        <Footer/>
       </div>
     </>
   );
