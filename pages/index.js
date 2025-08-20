@@ -179,7 +179,7 @@ export default function LandingPage() {
         description="The complete solution for organizing and managing your ServiceNow scripts"
       />
       <Head>
-        <title>SnowScripting | Organize & Manage ServiceNow Scripts</title>
+        <title>SnowScripting</title>
         <meta
           name="description"
           content="The complete solution for organizing and managing your ServiceNow scripts"
