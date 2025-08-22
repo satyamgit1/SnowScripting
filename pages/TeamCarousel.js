@@ -16,7 +16,7 @@ const teamMembers = [
     socials: {
       linkedin: 'https://www.linkedin.com/in/satyam-singh-612415223/',
       github: 'https://github.com/satyamgit1',
-      Email: 'satyamsingh2003a@gmail.com'
+      // Email: 'satyamsingh2003a@gmail.com'
     }
   },
   {
