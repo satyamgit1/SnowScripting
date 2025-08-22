@@ -1302,7 +1302,7 @@ const TeamCarousel = () => {
         </div>
 
         {/* Team stats footer */}
-        <motion.div 
+        {/* <motion.div 
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-4xl mx-auto z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -1324,7 +1324,7 @@ const TeamCarousel = () => {
             <div className="text-2xl font-bold text-orange-500">∞</div>
             <div className="text-gray-500 text-sm">Creative Ideas</div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
       <Footer />
     </div>
