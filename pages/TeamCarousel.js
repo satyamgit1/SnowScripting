@@ -891,7 +891,7 @@ const teamMembers = [
     name: 'Satyam Singh',
     role: 'Full Stack Developer',
     image: 'me.png',
-    bio: 'Full Stack Developer & ServiceNow Developer with hands-on experience in scripting, automation using Flow Designer, and third-party integrations. Proficient in creating custom applications and developing user-friendly portals using HTML, CSS, Next.js, React.js, and Angular. Skilled in leveraging cloud technologies and Java development to enhance system functionality and improve workflow efficiency.',
+    bio: 'Full Stack Developer & ServiceNow Developer with hands-on experience in scripting,developing user-friendly portals using HTML, CSS, Next.js, React.js, and Angular. Skilled in leveraging cloud technologies.',
     color: 'from-amber-500 to-orange-600',
     accentColor: 'bg-orange-500',
     socials: {
