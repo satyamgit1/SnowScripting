@@ -85,7 +85,7 @@
 //   )
 // };
 
-// const TeamCarousel = () => {
+// const OurTeam = () => {
 //   const [current, setCurrent] = useState(0);
 //   const [direction, setDirection] = useState(0);
 //   const [isHovering, setIsHovering] = useState(false);
@@ -432,7 +432,7 @@
 //   );
 // };
 
-// export default TeamCarousel;
+// export default OurTeam;
 
 
 // 'use client';
@@ -524,7 +524,7 @@
 //   )
 // };
 
-// const TeamCarousel = () => {
+// const OurTeam = () => {
 //   const [current, setCurrent] = useState(1); // Start with middle card
 //   const [direction, setDirection] = useState(0);
 //   const [isHovering, setIsHovering] = useState(false);
@@ -875,7 +875,7 @@
 //   );
 // };
 
-// export default TeamCarousel;
+// export default OurTeam;
 
 
 
@@ -970,7 +970,7 @@ const socialIcons = {
   )
 };
 
-const TeamCarousel = () => {
+const OurTeam = () => {
   const [current, setCurrent] = useState(0); // Start with Satyam Singh (index 0)
   const [direction, setDirection] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
@@ -1331,4 +1331,4 @@ const TeamCarousel = () => {
   );
 };
 
-export default TeamCarousel;
+export default OurTeam;
