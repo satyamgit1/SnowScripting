@@ -443,10 +443,22 @@ import Footer from 'components/Footer';
 
 const teamMembers = [
   {
+    name: 'Satyam Singh',
+    role: 'Full Stack Developer',
+    image: 'https://portfolio-flame-two-34.vercel.app/_next/static/media/heroProfile.908b2ee6.png',
+    bio: 'Full Stack Developer & ServiceNow Developer with hands-on experience in scripting, automation using Flow Designer, and third-party integrations. Proficient in creating custom applications and developing user-friendly portals using HTML, CSS, Next.js, React.js, and Angular. Skilled in leveraging cloud technologies and Java development to enhance system functionality and improve workflow efficiency.',
+    color: 'from-amber-500 to-orange-600',
+    accentColor: 'bg-orange-500',
+    socials: {
+      linkedin: 'https://www.linkedin.com/in/satyam-singh-612415223/',
+      github: 'https://github.com/satyamgit1'
+    }
+  },
+  {
     name: 'Akash Landge',
-    role: 'Frontend Architect',
+    role: 'ServiceNow Developer',
     image: 'akash.png',
-    bio: 'Specializing in React ecosystems with 8+ years of experience building performant, accessible web applications',
+    bio: 'ServiceNow Developer with hands-on experience in Client Scripts and Server-side Scripts. Skilled in Java development with practical expertise in building and managing applications.',
     color: 'from-blue-500 to-indigo-600',
     accentColor: 'bg-indigo-500',
     socials: {
@@ -478,18 +490,6 @@ const teamMembers = [
     accentColor: 'bg-teal-500',
     socials: {
       twitter: '#',
-      linkedin: '#',
-      github: '#'
-    }
-  },
-  {
-    name: 'Satyam Singh',
-    role: 'Full Stack Developer',
-    image: 'https://portfolio-flame-two-34.vercel.app/_next/static/media/heroProfile.908b2ee6.png',
-    bio: 'Implementing CI/CD pipelines and infrastructure as code for seamless deployments',
-    color: 'from-amber-500 to-orange-600',
-    accentColor: 'bg-orange-500',
-    socials: {
       linkedin: '#',
       github: '#'
     }
