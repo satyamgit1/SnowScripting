@@ -30,6 +30,7 @@
     "next-seo": "^6.8.0",
     "next-sitemap": "^4.2.3",
     "nextjs-smooth-scroll": "^1.0.10",
+    "node-polyfill-webpack-plugin": "^4.1.0",
     "nodemailer": "^6.10.1",
     "openai": "^4.104.0",
     "prism-react-renderer": "^2.4.1",
