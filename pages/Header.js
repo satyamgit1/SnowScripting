@@ -289,7 +289,7 @@ export default function Header() {
             <span>Testimonials</span>
           </button>
           <Link 
-            href="/TeamCarousel" 
+            href="/OurTeam" 
             className="flex items-center space-x-1.5 text-gray-300 hover:text-emerald-400 transition-colors font-medium"
             onClick={() => trackNavItemClick('Our Team')}
           >
