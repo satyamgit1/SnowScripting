@@ -80,7 +80,6 @@ const PUBLIC_ROUTES = [
   '/blog',
   '/About_us',
   '/About',
-  '/TeamCarousel',
   '/OurTeam',
   '/CareerPage'
 ];
