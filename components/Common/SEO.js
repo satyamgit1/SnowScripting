@@ -19,6 +19,7 @@ export default function SEO({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={logo} /> {/* Use logo prop here */}
+       <meta property="og:image" content={image} /> {/* Use logo prop here */}
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
       <meta property="og:image:type" content="image/png" />
