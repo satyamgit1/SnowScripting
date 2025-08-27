@@ -9,13 +9,14 @@ const teamMembers = [
     name: 'Satyam Singh',
     role: 'Full Stack Developer',
     image: 'me.png',
-    bio: 'Full Stack Developer & ServiceNow Developer with hands-on experience in scripting,developing user-friendly portals using HTML, CSS, Next.js, React.js, and Angular. Skilled in leveraging cloud technologies.',
+    bio: 'Full Stack Developer & ServiceNow Developer with hands-on experience in scripting,developing user-friendly portals using Next.js, React.js, and Angular.',
     color: 'from-amber-500 to-orange-600',
     accentColor: 'bg-orange-500',
     socials: {
       linkedin: 'https://www.linkedin.com/in/satyam-singh-612415223/',
       github: 'https://github.com/satyamgit1',
-      portfolio: 'https://portfolio-git-main-satyamgit1s-projects.vercel.app/'
+      portfolio: 'https://portfolio-git-main-satyamgit1s-projects.vercel.app/',
+      dribbble: '#'
     }
   },
   {
@@ -220,7 +221,7 @@ const OurTeam = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            A team of passionate professionals dedicated to crafting exceptional digital experiences
+            {/* A team of passionate professionals dedicated to crafting exceptional digital experiences */}
           </motion.p>
         </div>
 
