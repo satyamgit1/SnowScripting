@@ -84,33 +84,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div>
-              <h3 className={`${colors.secondaryText} text-lg font-semibold mb-4`}>
-                Product
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#features" className={colors.linkHover}>
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={colors.linkHover}>
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={colors.linkHover}>
-                    Integrations
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className={colors.linkHover}>
-                    Changelog
-                  </a>
-                </li>
-              </ul>
-            </div>
+            
 
             <div>
               <h3 className={`${colors.secondaryText} text-lg font-semibold mb-4`}>
@@ -142,7 +116,7 @@ export default function Footer() {
 
             <div>
               <h3 className={`${colors.secondaryText} text-lg font-semibold mb-4`}>
-                Company
+                Know us
               </h3>
               <ul className="space-y-3">
                 <li>
