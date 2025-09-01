@@ -427,7 +427,7 @@ export default function LandingPage() {
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
                 Trusted by{" "}
-                <span className={colors.primaryText}>ServiceNow</span> Developer
+                <span className={colors.primaryText}>ServiceNow</span> Developer & Experts.
               </h2>
               <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 Don't just take our word for it - hear from our users
