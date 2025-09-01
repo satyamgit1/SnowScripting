@@ -407,7 +407,10 @@ export default function NoteEditor({ initialData, onSave, projectList = [] }) {
     "fix_script",
     "email_script",
     "background_script",
-    "UI Builder"
+    "UI builder",
+    "Response template",
+    "Email template",
+    "Email action"
   ];
 
   const scriptSubTypes = {
@@ -416,6 +419,7 @@ export default function NoteEditor({ initialData, onSave, projectList = [] }) {
       { value: "after", label: "After" },
       { value: "async_after", label: "Async" },
       { value: "display", label: "Display" },
+      { value: "Query", label: "Query" },
     ],
     client_script: [
       { value: "onLoad", label: "OnLoad" },
