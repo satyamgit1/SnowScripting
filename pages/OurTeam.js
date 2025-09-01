@@ -16,7 +16,7 @@ const teamMembers = [
       linkedin: 'https://www.linkedin.com/in/satyam-singh-612415223/',
       github: 'https://github.com/satyamgit1',
       portfolio: 'https://portfolio-git-main-satyamgit1s-projects.vercel.app/',
-      dribbble: '#'
+
     }
   },
   {
