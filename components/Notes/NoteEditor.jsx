@@ -407,6 +407,7 @@ export default function NoteEditor({ initialData, onSave, projectList = [] }) {
     "fix_script",
     "email_script",
     "background_script",
+    "UI Builder"
   ];
 
   const scriptSubTypes = {
