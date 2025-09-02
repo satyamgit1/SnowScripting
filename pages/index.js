@@ -33,6 +33,7 @@ import {
 import BlurText from "./BlurText";
 import Header from "pages/Header";
 import Footer from "components/Footer";
+import VideoPlayer from "components/VideoPlayer";
 
 export default function LandingPage() {
   const [activeFeature, setActiveFeature] = useState(0);
@@ -397,7 +398,7 @@ export default function LandingPage() {
                   <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/watch?v=XMWLo0bTq7w" // Replace with your actual demo video ID
+                    src="https://www.youtube.com/embed/XMWLo0bTq7w" // Replace with your actual demo video ID
                     title="SnowScripting Demo"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -565,7 +566,6 @@ export default function LandingPage() {
         <div ref={aiAssistantRef}>
           <ServiceNowAIAssistant />
         </div>
-   
         {/* Features Section */}
         <section id="features" className="py-20 bg-gray-900">
           <div className="max-w-7xl mx-auto px-6">
@@ -692,9 +692,10 @@ export default function LandingPage() {
         </section>
 
       
+   <VideoPlayer />
 
         {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-br from-emerald-600 via-green-600 to-emerald-700 text-white">
+        {/* <section className="py-24 bg-gradient-to-br from-emerald-600 via-green-600 to-emerald-700 text-white">
           <div className="max-w-4xl mx-auto px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -767,7 +768,7 @@ export default function LandingPage() {
               </motion.div>
             </motion.div>
           </div>
-        </section>
+        </section> */}
         <Footer/>
       </div>
     </>
