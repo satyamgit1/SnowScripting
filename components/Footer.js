@@ -92,24 +92,24 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className={colors.linkHover}>
+                  <a href="https://www.servicenow.com/docs/"  target='blank' className={colors.linkHover}>
                     Documentation
                   </a>
                 </li>
                 <li>
-                  <a href="#" className={colors.linkHover}>
+                  <a href="https://www.servicenow.com/docs/bundle/zurich-api-reference/page/build/applications/concept/api-implementation-reference.html" target='blank' className={colors.linkHover}>
                     API Reference
                   </a>
                 </li>
                 <li>
-                  <a href="#" className={colors.linkHover}>
+                  <a href="https://www.servicenow.com/community/" target='blank' className={colors.linkHover}>
                     Community
                   </a>
                 </li>
                 <li>
-                  <a href="#" className={colors.linkHover}>
+                  {/* <a href="#" className={colors.linkHover}>
                     Support
-                  </a>
+                  </a> */}
                 </li>
               </ul>
             </div>
