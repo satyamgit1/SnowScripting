@@ -411,7 +411,7 @@ export default function ServiceNowAIAssistant() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                   </svg>
                 </span>
-                ServiceNow Scripting Assistant
+                SnowScripting AI Assistant
               </h3>
               <p className={`text-sm mt-1 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 Get expert help with your ServiceNow development
@@ -803,10 +803,10 @@ export default function ServiceNowAIAssistant() {
             </div>
           </form>
           
-          <div className={`mt-4 text-center text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+          {/* <div className={`mt-4 text-center text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
             Powered by GLM-4.5 • Responses may contain inaccuracies • 
             <span className="ml-1">Keyboard shortcuts: Ctrl+Enter to send, Ctrl+K to reset, Esc to focus</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
