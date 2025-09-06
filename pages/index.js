@@ -375,7 +375,7 @@ export default function LandingPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+              className="fixed inset-0   bg-opacity-75 flex items-center justify-center z-50 p-4"
             >
               <motion.div
                 ref={modalRef}
@@ -394,7 +394,7 @@ export default function LandingPage() {
                     <FiX className="w-6 h-6" />
                   </button>
                 </div>
-                <div className="aspect-video bg-black">
+                <div className="aspect-video ">
                   <iframe
                     width="100%"
                     height="100%"
