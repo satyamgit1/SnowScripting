@@ -63,7 +63,7 @@ const teamMembers = [
     name: 'M shahvez',
     role: 'Software Developer',
     image: 'shahvej.png',
-    bio: '',
+    bio: 'Seasoned full-stack developer and ServiceNow expert with a proven track record in Java, Spring Boot, and data migration. I specialize in creating robust business solutions and enhancing user experiences through strategic use of ServiceNow ITSM, CSM, and Flow Designer modules',
     color: 'from-emerald-500 to-teal-600',
     accentColor: 'bg-teal-500',
     socials: {
@@ -76,7 +76,7 @@ const teamMembers = [
     name: 'Aditya Gupta',
     role: 'ServiceNow Developer',
     image: 'aditya.png',
-    bio: '',
+    bio: 'Highly proficient ServiceNow professional specializing in Data Migration and Glide Scripting. I excel at crafting robust business solutions and enhancing user experiences by leveraging ITSM, CSM, and Virtual Agent modules.',
     color: 'from-emerald-500 to-teal-600',
     accentColor: 'bg-teal-500',
     socials: {
