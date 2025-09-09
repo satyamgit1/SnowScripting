@@ -35,7 +35,7 @@ const teamMembers = [
   },
   {
     name: 'Prakshal Jain.',
-    role: 'Senior Software Engineer',
+    role: 'Senior Software Developer',
     image: 'jain.png',
     bio: 'Full-stack developer and ServiceNow expert skilled in Java, Spring Boot, and Apache Kafka. I enhance business solutions and user experience with ServiceNow ITSM and CSM modules',
     color: 'from-purple-500 to-pink-600',
@@ -56,6 +56,32 @@ const teamMembers = [
     socials: {
       // twitter: '#',
       linkedin: 'https://www.linkedin.com/in/priyanshu-anand-b57915269/',
+      // github: '#'
+    }
+  },
+  {
+    name: 'M shahvez',
+    role: 'Software Developer',
+    image: 'shahvej.png',
+    bio: '',
+    color: 'from-emerald-500 to-teal-600',
+    accentColor: 'bg-teal-500',
+    socials: {
+      // twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/mohd-shahvej-629aa81a8/',
+      // github: '#'
+    }
+  },
+  {
+    name: 'Aditya Gupta',
+    role: 'ServiceNow Developer',
+    image: 'aditya.png',
+    bio: '',
+    color: 'from-emerald-500 to-teal-600',
+    accentColor: 'bg-teal-500',
+    socials: {
+      // twitter: '#',
+      linkedin: 'https://www.linkedin.com/in/aditya-gupta-675b681b0/',
       // github: '#'
     }
   }
