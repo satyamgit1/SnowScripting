@@ -37,7 +37,7 @@ const teamMembers = [
     name: 'Prakshal Jain.',
     role: 'Senior Software Engineer',
     image: 'jain.png',
-    bio: 'Crafting intuitive digital experiences with a focus on human-centered design principles and accessibility',
+    bio: 'Experienced full-stack developer and ServiceNow professional with a strong background in Java, Spring Boot, and Apache Kafka. I have a proven track record of designing and implementing scalable business solutions, with a focus on enhancing functionality and user experience through strategic use of ServiceNow Client Scripts and Business Rules.',
     color: 'from-purple-500 to-pink-600',
     accentColor: 'bg-pink-500',
     socials: {
