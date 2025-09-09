@@ -79,7 +79,7 @@ const VideoPlayer = () => (
     <VideoDescription>The ultimate platform for ServiceNow developers to store, manage, and instantly access all scripts in one beautifully organized workspace.</VideoDescription>
     <PlayerWrapper>
       <YouTube
-        videoId="jQOZjC52TKc"
+        videoId="kV0B9q8CJfM"
         opts={videoOpts}
         iframeClassName="youtube-iframe"
       />

@@ -398,7 +398,7 @@ export default function LandingPage() {
                   <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/jQOZjC52TKc" // Replace with your actual demo video ID
+                    src="https://www.youtube.com/embed/kV0B9q8CJfM" // Replace with your actual demo video ID
                     title="SnowScripting Demo"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
